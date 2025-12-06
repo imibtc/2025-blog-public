@@ -154,4 +154,5 @@ export const GITHUB_CONFIG = {
 ### 9.3 新建文章-提示出错
 有可能是编辑文章后缀名时加了空格
 
-
+### 9.4 导航栏修改
+`src/components/nav-card.tsx`
