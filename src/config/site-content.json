@@ -1,8 +1,8 @@
 {
 	"meta": {
-		"title": "YYsuni",
-		"description": "YYsuni 的个人博客，记录前端开发、探索笔记。前端 UI 更新代码仓库。",
-		"username": "Suni"
+		"title": "HDxiaoke",
+		"description": "HDxiaoke 的个人博客，记录网络日志、笔记。",
+		"username": "xiaoke"
 	},
 	"theme": {
 		"colorBrand": "#de4331",
@@ -14,7 +14,14 @@
 		"colorCard": "#ffffff66",
 		"colorArticle": "#ffffffcc"
 	},
-	"backgroundColors": ["#FCC841", "#DFEFFC", "#DEDE92", "#DE4331", "#FE9750", "#FCC841"],
+	"backgroundColors": [
+		"#FCC841",
+		"#DFEFFC",
+		"#DEDE92",
+		"#DE4331",
+		"#FE9750",
+		"#FCC841"
+	],
 	"artImages": [
 		{
 			"id": "cat",
@@ -35,25 +42,25 @@
 	"currentBackgroundImageId": "",
 	"socialButtons": [
 		{
-			"id": "github",
-			"type": "github",
-			"value": "https://github.com/yysuni",
-			"label": "Github",
-			"order": 3
+			"id": "email",
+			"type": "email",
+			"value": "hdxiaoke@126.com",
+			"label": "",
+			"order": 1
 		},
 		{
-			"id": "juejin",
-			"type": "juejin",
-			"value": "https://juejin.cn/user/2427311675422382",
-			"label": "稀土掘金",
+			"id": "button-1764993008536",
+			"type": "link",
+			"value": "https://www.imibtc.com/",
+			"label": "YMblog",
 			"order": 2
 		},
 		{
-			"id": "email",
-			"type": "email",
-			"value": "yysuni1001@gmail.com",
-			"label": "",
-			"order": 1
+			"id": "button-1764993062664",
+			"type": "link",
+			"value": "https://www.imibtc.com/27.html",
+			"label": "资源库",
+			"order": 3
 		}
 	],
 	"clockShowSeconds": false
