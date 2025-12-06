@@ -74,6 +74,6 @@
 			"order": 4
 		}
 	],
-	"clockShowSeconds": false,
-	"summaryInContent": false
+	"clockShowSeconds": true,
+	"summaryInContent": true
 }
