@@ -1,19 +1,8 @@
 [
 	{
-		"name": "第一版 Blog 网站",
-		"year": 2023,
-		"description": "最开始是觉得掘金这种网站写文章挺好的。后面还是想写一个自己网站，体现自己的风格。MDX 还可以自己写组件到 blog，直接交互，多好。。。没想到为以后埋下了坑。",
-		"image": "https://blog-archive.yysuni.com/favicons/android-chrome-512x512.png",
-		"url": "https://blog-archive.yysuni.com/",
-		"tags": [
-			"Next.js",
-			"MDX"
-		]
-	},
-	{
 		"name": "红墨 - 小红书AI图文生成器",
 		"year": 2025,
-		"image": "blob:https://www.hdxiaoke.top/2fc2b6d0-06f0-4d49-ad1d-ed1bbd73c244",
+		"image": "/images/project/0550c14bd025ca13.png",
 		"url": "https://github.com/HisMax/RedInk",
 		"description": "红墨 - 基于🍌Nano Banana Pro🍌 的一站式小红书图文生成器 《一句话一张图片生成小红书图文》",
 		"tags": [
