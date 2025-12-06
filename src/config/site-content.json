@@ -30,6 +30,10 @@
 		{
 			"id": "a46372ff45bc5524",
 			"url": "/images/art/a46372ff45bc5524.jpg"
+		},
+		{
+			"id": "679d17e588d6963f",
+			"url": "/images/art/679d17e588d6963f.png"
 		}
 	],
 	"currentArtImageId": "a46372ff45bc5524",
@@ -49,18 +53,25 @@
 			"order": 1
 		},
 		{
-			"id": "button-1764993008536",
-			"type": "link",
-			"value": "https://www.imibtc.com/",
-			"label": "YMblog",
-			"order": 2
-		},
-		{
 			"id": "button-1764993062664",
 			"type": "link",
 			"value": "https://www.imibtc.com/27.html",
 			"label": "资源库",
+			"order": 2
+		},
+		{
+			"id": "button-1765028651761",
+			"type": "link",
+			"value": "https://www.imibtc.com/36.html",
+			"label": "游戏库",
 			"order": 3
+		},
+		{
+			"id": "button-1764993008536",
+			"type": "link",
+			"value": "https://www.imibtc.com/",
+			"label": "YMblog",
+			"order": 4
 		}
 	],
 	"clockShowSeconds": false
