@@ -9,5 +9,16 @@
 			"Next.js",
 			"MDX"
 		]
+	},
+	{
+		"name": "红墨 - 小红书AI图文生成器",
+		"year": 2025,
+		"image": "blob:https://www.hdxiaoke.top/2fc2b6d0-06f0-4d49-ad1d-ed1bbd73c244",
+		"url": "https://github.com/HisMax/RedInk",
+		"description": "红墨 - 基于🍌Nano Banana Pro🍌 的一站式小红书图文生成器 《一句话一张图片生成小红书图文》",
+		"tags": [
+			"小红书"
+		],
+		"github": "https://github.com/HisMax/RedInk"
 	}
 ]
