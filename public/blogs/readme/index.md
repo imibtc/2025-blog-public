@@ -109,7 +109,7 @@ export const GITHUB_CONFIG = {
 
 非前端配置内容，还是需要一个文件指引。下面写一些更细致的代码配置。
 
-### 8.1 移除 Liquid Grass
+### 8.1 移除 Liquid Grass（已移除）
 
 > 已移动至相关文章中显示，图例已过时
 
@@ -133,7 +133,7 @@ export const GITHUB_CONFIG = {
 
 ![](/blogs/readme/9780c38f886322fd.png)
 
-### 8.3 移除 blog 列表的更多按钮
+### 8.3 移除 blog 列表的更多按钮（361-375）
 
 `src/app/blog/page.tsx` 文件，下图位置，删除这部分代码。
 
