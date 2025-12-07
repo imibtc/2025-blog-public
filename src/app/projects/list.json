@@ -37,7 +37,7 @@
 	{
 		"name": "AI-Media2Doc",
 		"year": 2025,
-		"image": "blob:https://www.hdxiaoke.top/e3030851-63f7-4010-99a7-e7f5426d334e",
+		"image": "/images/project/aa5e4ca8a663ad24.webp",
 		"url": "https://github.com/imibtc/AI-Media2Doc",
 		"description": "一键将音视频转化为小红书/公众号/知识笔记/思维导图/视频字幕等各种风格的文档。",
 		"tags": [
@@ -48,7 +48,7 @@
 	{
 		"name": "LibreTV",
 		"year": 2025,
-		"image": "blob:https://www.hdxiaoke.top/851fc69c-3583-412f-ab69-02335b4b4af6",
+		"image": "/images/project/97b48b9d5efb4322.webp",
 		"url": "https://github.com/imibtc/LibreTV",
 		"description": "一分钟搭建影视站，支持Vercel/Docker等部署方式",
 		"tags": [
