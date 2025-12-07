@@ -2,7 +2,10 @@
   {
     "slug": "Vercel-Cloudflare",
     "title": "Vercel + Cloudflare 实现网站免备案部署与加速",
-    "tags": [],
+    "tags": [
+      "Cloudflare",
+      "域名绑定"
+    ],
     "date": "2025-12-07",
     "summary": "利用 Vercel 进行网站部署，并结合 Cloudflare 的免费 CDN 和 DNS 服务，实现自定义域名绑定、全球加速及 HTTPS 安全访问。",
     "cover": "/blogs/Vercel-Cloudflare/ee227de8c6c8890f.webp"
