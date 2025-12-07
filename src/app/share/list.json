@@ -29,5 +29,15 @@
 			"谷歌软件"
 		],
 		"stars": 3
+	},
+	{
+		"name": "AudioVisual",
+		"logo": "blob:https://www.hdxiaoke.top/fa88c46c-1e17-460b-b50c-be654d992827",
+		"url": "https://github.com/RemotePinee/AudioVisual/releases/tag/v1.0.8",
+		"description": "解锁所有国内媒体流的钥匙 ，一个功能强大的视频解析工具，支持多平台视频网站",
+		"tags": [
+			"软件"
+		],
+		"stars": 3
 	}
 ]
