@@ -65,10 +65,12 @@ https://www.cloudflare-cn.com/
 
 1. 登录 Vercel 控制台，进入你的项目。
 2. 点击顶部的 **“Settings”**（设置）选项卡，然后在左侧菜单栏选择 **“Domains”**（域名）。
-3. 在输入框中，分别添加你的两个域名并保存：
+3. 在输入框中，分别搜索添加你的两个域名并保存：
    - 输入 `www.hdxiaoke.top`，按回车。
    - 输入 `hdxiaoke.top`，按回车。
 4. Vercel 会自动验证 DNS 记录。如果配置正确，几分钟后域名状态会显示为绿色的 **“Valid”**（有效）或 **“Proxy Detected”**（已检测到代理），这表示绑定成功。
+
+![](https://www.hdxiaoke.top/blogs/Vercel-Cloudflare/ee227de8c6c8890f.webp)
 
 ### 3.4 阶段四：优化配置（可选但推荐）
 
