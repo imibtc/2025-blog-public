@@ -9,5 +9,17 @@
 			"小红书"
 		],
 		"github": "https://github.com/HisMax/RedInk"
+	},
+	{
+		"name": "TrendRadar",
+		"year": 2025,
+		"image": "blob:https://www.hdxiaoke.top/2c5e8248-3a25-49a3-a629-f4f593c7e16c",
+		"url": "https://imibtc.github.io/TrendRadar/",
+		"description": "简单的舆情监控分析 - 多平台热点聚合+基于 MCP 的AI分析工具。监控35个平台，智能筛选+自动推送+AI对话分析。",
+		"tags": [
+			"新闻",
+			"热点"
+		],
+		"github": "https://github.com/sansan0/TrendRadar"
 	}
 ]
