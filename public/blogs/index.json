@@ -8,6 +8,14 @@
     "cover": "/blogs/Vercel-Cloudflare/ee227de8c6c8890f.webp"
   },
   {
+    "slug": "GitHub-Desktop",
+    "title": "GitHub Desktop 同步上游仓库（Fork）速查表",
+    "tags": [],
+    "date": "2025-12-07",
+    "summary": "用 GitHub Desktop 进行同步上游等操作是比较方便的选择，以下整理了下，以便后期查看。",
+    "cover": "/blogs/GitHub-Desktop/e0b2ecd191fa9ccb.webp"
+  },
+  {
     "slug": "readme",
     "title": "2025 Blog 的使用引导",
     "tags": [
