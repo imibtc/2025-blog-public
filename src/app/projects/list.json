@@ -33,5 +33,16 @@
 			"公众号"
 		],
 		"github": "https://github.com/OpenAISpace/ai-trend-publish"
+	},
+	{
+		"name": "AI-Media2Doc",
+		"year": 2025,
+		"image": "blob:https://www.hdxiaoke.top/2c96c892-b08b-4492-8c2f-57960e911b4c",
+		"url": "https://github.com/imibtc/AI-Media2Doc",
+		"description": "一键将音视频转化为小红书/公众号/知识笔记/思维导图/视频字幕等各种风格的文档。",
+		"tags": [
+			"转换"
+		],
+		"github": "https://github.com/hanshuaikang/AI-Media2Doc"
 	}
 ]
