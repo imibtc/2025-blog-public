@@ -48,7 +48,7 @@
 	{
 		"name": "LibreTV",
 		"year": 2025,
-		"image": "blob:https://www.hdxiaoke.top/ef97a8cb-b961-4534-88ab-27391194b369",
+		"image": "/images/project/97b48b9d5efb4322.webp",
 		"url": "https://github.com/imibtc/LibreTV",
 		"description": "一分钟搭建影视站，支持Vercel/Docker等部署方式",
 		"tags": [
