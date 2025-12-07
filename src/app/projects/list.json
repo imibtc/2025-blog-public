@@ -25,7 +25,7 @@
 	{
 		"name": "ai-trend-publish",
 		"year": 2025,
-		"image": "blob:https://www.hdxiaoke.top/92ce13a8-491f-44d3-8c79-fe6b7ce1ebfe",
+		"image": "/images/project/253345825f298f59.webp",
 		"url": "https://github.com/imibtc/ai-trend-publish",
 		"description": "基于 Deno 开发的趋势发现和内容发布系统，支持多源数据采集、智能总结和自动发布到微信公众号。",
 		"tags": [
@@ -37,7 +37,7 @@
 	{
 		"name": "AI-Media2Doc",
 		"year": 2025,
-		"image": "/images/project/aa5e4ca8a663ad24.webp",
+		"image": "blob:https://www.hdxiaoke.top/e3030851-63f7-4010-99a7-e7f5426d334e",
 		"url": "https://github.com/imibtc/AI-Media2Doc",
 		"description": "一键将音视频转化为小红书/公众号/知识笔记/思维导图/视频字幕等各种风格的文档。",
 		"tags": [
