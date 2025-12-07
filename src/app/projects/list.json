@@ -21,5 +21,17 @@
 			"热点"
 		],
 		"github": "https://github.com/sansan0/TrendRadar"
+	},
+	{
+		"name": "ai-trend-publish",
+		"year": 2025,
+		"image": "blob:https://www.hdxiaoke.top/92ce13a8-491f-44d3-8c79-fe6b7ce1ebfe",
+		"url": "https://github.com/imibtc/ai-trend-publish",
+		"description": "基于 Deno 开发的趋势发现和内容发布系统，支持多源数据采集、智能总结和自动发布到微信公众号。",
+		"tags": [
+			"采集",
+			"公众号"
+		],
+		"github": "https://github.com/OpenAISpace/ai-trend-publish"
 	}
 ]
