@@ -12,5 +12,12 @@
 		"url": " https://www.hdxiaoke.top/image-toolbox",
 		"description": "无限压缩，快且方便，可以直接对比效果",
 		"stars": 3
+	},
+	{
+		"name": "AI自动图片编辑",
+		"avatar": "blob:https://www.hdxiaoke.top/8de5a12e-b37b-4fcf-970e-e4ba48d37005",
+		"url": "https://photokit.com/?lang=zh",
+		"description": "基于AI人工智能的在线图片编辑器，方便易用。您可以通过编辑器一键抠图、改图、修图、美图等。",
+		"stars": 5
 	}
 ]
