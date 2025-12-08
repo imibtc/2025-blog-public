@@ -76,6 +76,13 @@
 			"value": "https://github.com/imibtc",
 			"label": "Github",
 			"order": 4
+		},
+		{
+			"id": "button-1765158833566",
+			"type": "xiaohongshu",
+			"value": "https://xhslink.com/m/49YfZizm3jB",
+			"label": "",
+			"order": 5
 		}
 	],
 	"clockShowSeconds": true,
