@@ -78,6 +78,7 @@
 			"order": 4
 		}
 	],
-	"clockShowSeconds": true,
-	"summaryInContent": true
+	"clockShowSeconds": false,
+	"summaryInContent": false,
+	"hideEditButton": false
 }
