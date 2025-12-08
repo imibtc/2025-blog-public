@@ -50,8 +50,8 @@
 		"enabled": true
 	},
 	"shareCard": {
-		"width": 277,
-		"height": 162,
+		"width": 280,
+		"height": 165,
 		"order": 7,
 		"offsetX": 206,
 		"offsetY": 179,
