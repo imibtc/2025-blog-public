@@ -71,17 +71,17 @@
 			"order": 3
 		},
 		{
-			"id": "button-1765158735325",
-			"type": "github",
-			"value": "https://github.com/imibtc",
-			"label": "Github",
-			"order": 4
-		},
-		{
 			"id": "button-1765158833566",
 			"type": "xiaohongshu",
 			"value": "https://xhslink.com/m/49YfZizm3jB",
 			"label": "",
+			"order": 4
+		},
+		{
+			"id": "button-1765158735325",
+			"type": "github",
+			"value": "https://github.com/imibtc",
+			"label": "Github",
 			"order": 5
 		}
 	],
