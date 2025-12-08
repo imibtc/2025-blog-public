@@ -8,7 +8,7 @@
 		"enabled": true
 	},
 	"hiCard": {
-		"width": 347,
+		"width": 345,
 		"height": 276,
 		"order": 1,
 		"offsetX": -180,
@@ -25,7 +25,7 @@
 		"enabled": true
 	},
 	"calendarCard": {
-		"width": 267,
+		"width": 280,
 		"height": 261,
 		"order": 5,
 		"offsetX": 206,
