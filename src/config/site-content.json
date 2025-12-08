@@ -69,6 +69,13 @@
 			"value": "hdxiaoke",
 			"label": "YMblog",
 			"order": 3
+		},
+		{
+			"id": "button-1765161429003",
+			"type": "juejin",
+			"value": "",
+			"label": "联系方式：",
+			"order": 4
 		}
 	],
 	"clockShowSeconds": true,
