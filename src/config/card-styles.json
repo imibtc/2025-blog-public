@@ -16,12 +16,12 @@
 		"enabled": true
 	},
 	"clockCard": {
-		"width": 228,
-		"height": 106,
+		"width": 226,
+		"height": 81,
 		"offset": 92,
 		"order": 4,
-		"offsetX": 215,
-		"offsetY": -220,
+		"offsetX": 216,
+		"offsetY": -218,
 		"enabled": true
 	},
 	"calendarCard": {
@@ -29,7 +29,7 @@
 		"height": 261,
 		"order": 5,
 		"offsetX": 206,
-		"offsetY": -96,
+		"offsetY": -110,
 		"enabled": true
 	},
 	"musicCard": {
@@ -51,18 +51,18 @@
 	},
 	"shareCard": {
 		"width": 277,
-		"height": 154,
+		"height": 162,
 		"order": 7,
-		"offsetX": 203,
-		"offsetY": 175,
+		"offsetX": 206,
+		"offsetY": 179,
 		"enabled": true
 	},
 	"articleCard": {
-		"width": 283,
-		"height": 160,
+		"width": 280,
+		"height": 165,
 		"order": 8,
-		"offsetX": -485,
-		"offsetY": 164,
+		"offsetX": -488,
+		"offsetY": 169,
 		"enabled": true
 	},
 	"writeButtons": {
