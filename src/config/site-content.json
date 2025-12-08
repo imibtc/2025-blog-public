@@ -69,6 +69,13 @@
 			"value": "hdxiaoke",
 			"label": "YMblog",
 			"order": 3
+		},
+		{
+			"id": "button-1765158735325",
+			"type": "github",
+			"value": "https://github.com/imibtc",
+			"label": "Github",
+			"order": 4
 		}
 	],
 	"clockShowSeconds": true,
