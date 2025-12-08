@@ -57,25 +57,18 @@
 			"order": 1
 		},
 		{
-			"id": "button-1764993062664",
-			"type": "link",
-			"value": "https://www.imibtc.com/27.html",
-			"label": "资源库",
-			"order": 2
-		},
-		{
 			"id": "button-1765157615504",
 			"type": "qq",
 			"value": "445425400",
 			"label": "",
-			"order": 3
+			"order": 2
 		},
 		{
 			"id": "button-1764993008536",
-			"type": "link",
-			"value": "https://www.imibtc.com/",
+			"type": "wechat",
+			"value": "hdxiaoke",
 			"label": "YMblog",
-			"order": 4
+			"order": 3
 		}
 	],
 	"clockShowSeconds": true,
