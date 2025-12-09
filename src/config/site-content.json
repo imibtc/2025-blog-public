@@ -79,6 +79,7 @@
 		}
 	],
 	"clockShowSeconds": false,
-	"summaryInContent": true,
+	"summaryInContent": false,
+	"isCachePem": false,
 	"hideEditButton": false
 }
