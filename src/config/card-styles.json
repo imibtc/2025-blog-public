@@ -12,7 +12,7 @@
 		"height": 276,
 		"order": 1,
 		"offsetX": -180,
-		"offsetY": -288,
+		"offsetY": -290,
 		"enabled": true
 	},
 	"clockCard": {
@@ -21,7 +21,7 @@
 		"offset": 92,
 		"order": 4,
 		"offsetX": 224,
-		"offsetY": -218,
+		"offsetY": -222,
 		"enabled": true
 	},
 	"calendarCard": {
@@ -29,7 +29,7 @@
 		"height": 261,
 		"order": 5,
 		"offsetX": 206,
-		"offsetY": -110,
+		"offsetY": -114,
 		"enabled": true
 	},
 	"musicCard": {
@@ -54,7 +54,7 @@
 		"height": 165,
 		"order": 7,
 		"offsetX": 206,
-		"offsetY": 179,
+		"offsetY": 174,
 		"enabled": true
 	},
 	"articleCard": {
@@ -70,7 +70,7 @@
 		"width": 180,
 		"order": 8,
 		"offsetX": 238,
-		"offsetY": -284,
+		"offsetY": -287,
 		"enabled": true
 	},
 	"navCard": {
