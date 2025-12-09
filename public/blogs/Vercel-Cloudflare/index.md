@@ -57,8 +57,8 @@ https://www.cloudflare-cn.com/
 
 | 记录 | 类型 | 名称 | 目标 | 代理状态 |
 |------|------|------|------|----------|
-| 一（www） | CNAME | `www` | `2025-blog-public-olive.vercel.app` | 🟠 橙色云朵（已代理） |
-| 二（根） | CNAME | `@` | `同上填你的vercel网址` | 🟠 橙色云朵（已代理） |
+| 一（www） | CNAME | `www` | `cname-china.vercel-dns.com` | 🟠 橙色云朵（已代理） |
+| 二（根） | CNAME | `@` | `cname-china.vercel-dns.com` | 🟠 橙色云朵（已代理） |
 
 ### 3.3 阶段三：在 Vercel 绑定自定义域名
 现在需要告诉 Vercel，当有人访问你的域名时，应该展示哪个网站的内容。
