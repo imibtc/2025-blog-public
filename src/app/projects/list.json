@@ -55,5 +55,18 @@
 			"影视"
 		],
 		"github": "https://github.com/LibreSpark/LibreTV"
+	},
+	{
+		"name": "一键将视频转化为AI手绘故事",
+		"year": 2025,
+		"image": "blob:https://www.hdxiaoke.top/04f7be78-938f-4274-968c-a53819bb256c",
+		"url": "https://github.com/RanFeng/clipsketch-ai",
+		"description": "非常适合用来二创，支持解析B站、小红书链接，能够转化为精美的手绘故事，并自动撰写文案，自媒体必备",
+		"tags": [
+			"二创",
+			"手绘",
+			"视频转换"
+		],
+		"github": "https://github.com/RanFeng/clipsketch-ai"
 	}
 ]
