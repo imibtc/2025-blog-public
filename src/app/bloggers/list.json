@@ -19,5 +19,19 @@
 		"url": "https://photokit.com/?lang=zh",
 		"description": "基于AI人工智能的在线图片编辑器，方便易用。您可以通过编辑器一键抠图、改图、修图、美图等。",
 		"stars": 5
+	},
+	{
+		"name": "观猹",
+		"avatar": "blob:https://www.hdxiaoke.top/23c8ef8d-b8ba-430f-934b-11c2212850dd",
+		"url": "https://watcha.cn/",
+		"description": "一个类似“AI工具版Product Hunt”的社区，适合开发者发布新品、用户交流体验，或投资人寻找项目。",
+		"stars": 4
+	},
+	{
+		"name": "IPLark",
+		"avatar": "blob:https://www.hdxiaoke.top/cef5e1dc-41ab-48b8-8088-62becdc2d762",
+		"url": "https://iplark.com/",
+		"description": "一个简洁的IP查询工具，界面极简，无需点击，刷新即更新，适合快速查看本机出口IP或校验代理是否生效。",
+		"stars": 4
 	}
 ]
