@@ -75,6 +75,7 @@
     ],
     "date": "2025-07-26",
     "summary": "中文域名（如：`伊米博客.我爱你`）规避平台网址封禁，成本低（19元/年），用户易记易传播，适合抖音/快手等敏感平台。",
-    "cover": "/blogs/Chinese-name/a771ec3712c56952.webp"
+    "cover": "/blogs/Chinese-name/a771ec3712c56952.webp",
+    "hidden": false
   }
 ]

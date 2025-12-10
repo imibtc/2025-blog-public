@@ -31,7 +31,7 @@
 ### 1.​​选低价香港/美国空间​
 
  - 闲鱼/淘宝搜香港免备案空间，选10M容量款（约2元/年）
- - 我用的是：[免备案空间][3]
+ - 我用的是：<a href="https://www.6gk.cn/aff/SMJYFPMH" target="_blank" rel="noopener noreferrer">免备案空间</a>
 
 ### 2.​​绑定域名​
 
@@ -95,6 +95,3 @@ https://pan.quark.cn/s/1c052454a10b
 
 ----------
 
-
-
-  [3]: https://www.6gk.cn/aff/SMJYFPMH
