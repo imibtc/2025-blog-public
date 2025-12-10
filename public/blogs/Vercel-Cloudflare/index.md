@@ -72,15 +72,6 @@ https://www.cloudflare-cn.com/
 
 ![](https://www.hdxiaoke.top/blogs/Vercel-Cloudflare/ee227de8c6c8890f.webp)
 
-### 3.4 阶段四：优化配置（可选但推荐）
-
-1. **配置 SSL/TLS**
-   - 在 Cloudflare 控制台，进入 **“SSL/TLS”** 设置。
-   - 将加密模式从默认的“Flexible”（灵活）更改为 **“Full (strict)”**（完全-严格）。这能确保从用户到你的源站（Vercel）全程加密，避免可能的重定向循环问题。
-
-2. **配置重定向（可选）**
-   - 如果你希望访问根域名（如 `hdxiaoke.top`）时自动跳转到带 www 的域名（如 `www.hdxiaoke.top`），可以在 Cloudflare 的 **“页面规则”**（Page Rules）中设置一条 301 重定向规则。
-
 ---
 
 4. 测试与访问
