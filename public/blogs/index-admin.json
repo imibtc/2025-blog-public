@@ -1,5 +1,39 @@
 [
   {
+    "slug": "Gemini-prompt",
+    "title": "Gemini提示词：最近比较火的 “人物拆解”",
+    "tags": [
+      "Gemini",
+      "提示词"
+    ],
+    "date": "2025-12-10",
+    "summary": "这个是目前大家比较喜欢的一版，人物拆解",
+    "cover": "/blogs/Gemini-prompt/f651b2e860ae04f4.webp",
+    "hidden": false
+  },
+  {
+    "slug": "NanoBanana-prompt",
+    "title": "Nano Banana Pro 提示词：任何爱好或者职业的进阶之路",
+    "tags": [
+      "Nano Banana",
+      "提示词"
+    ],
+    "date": "2025-12-09",
+    "summary": "用非常可爱的黏土风格展示不同等级的标准和消耗时间",
+    "cover": "/blogs/NanoBanana-prompt/bf75362cf39afa63.webp"
+  },
+  {
+    "slug": "End-Start",
+    "title": "域名断续，备案注销，服务器搁置，结束和开始",
+    "tags": [
+      "结束",
+      "开始"
+    ],
+    "date": "2025-12-08",
+    "summary": "结束com域名，备案，服务器。开始top域名，github+Vercel + Cloudflare 新的征程",
+    "cover": "/blogs/End-Start/d5215c2fb1f2776f.webp"
+  },
+  {
     "slug": "Vercel-Cloudflare",
     "title": "Vercel + Cloudflare 实现网站免备案部署与加速",
     "tags": [
@@ -7,8 +41,42 @@
       "域名绑定"
     ],
     "date": "2025-12-07",
-    "summary": "利用 Vercel 结合 Cloudflare 的免费 CDN 和 DNS 服务，实现自定义域名绑定、全球加速及 HTTPS 安全访问。",
+    "summary": "利用 Vercel 进行网站部署，并结合 Cloudflare 的免费 CDN 和 DNS 服务，实现自定义域名绑定、全球加速及 HTTPS 安全访问。",
     "cover": "/blogs/Vercel-Cloudflare/ee227de8c6c8890f.webp",
+    "hidden": false
+  },
+  {
+    "slug": "GitHub-Desktop",
+    "title": "2025-blog-public 与上游同步",
+    "tags": [
+      "GitHub Desktop",
+      "同步上游"
+    ],
+    "date": "2025-12-07",
+    "summary": "用 GitHub Desktop 进行同步上游等操作是比较方便的选择，以下整理了下，以便后期查看。",
+    "cover": "/blogs/GitHub-Desktop/e0b2ecd191fa9ccb.webp"
+  },
+  {
+    "slug": "readme",
+    "title": "2025 Blog 的使用引导",
+    "tags": [
+      "开源",
+      "安装说明"
+    ],
+    "date": "2025-12-06",
+    "summary": "2025-blog-public 项目的使用说明以及注意事项",
+    "cover": "/blogs/readme/9532a65cc32ca5eb.png"
+  },
+  {
+    "slug": "Chinese-name",
+    "title": "19元中文域名·防封引流术：抖音快手秒跳任意页面",
+    "tags": [
+      "中文域名",
+      "转链接"
+    ],
+    "date": "2025-07-26",
+    "summary": "中文域名（如：`伊米博客.我爱你`）规避平台网址封禁，成本低（19元/年），用户易记易传播，适合抖音/快手等敏感平台。",
+    "cover": "/blogs/Chinese-name/a771ec3712c56952.webp",
     "hidden": false
   }
 ]
