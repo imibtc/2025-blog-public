@@ -27,7 +27,9 @@ git fetch upstream
 
 出现 `remote: Counting objects...` 字样就是正在下载，等他完成。
 
-## 看看上游最新提交是啥
+看看上游最新提交是啥：
+
+```bash
 git log upstream/main --oneline -5
 ```
 
