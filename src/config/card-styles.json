@@ -3,7 +3,7 @@
 		"width": 345,
 		"height": 188,
 		"order": 3,
-		"offsetX": -176,
+		"offsetX": -175,
 		"offsetY": 8,
 		"enabled": true
 	},
@@ -11,8 +11,8 @@
 		"width": 345,
 		"height": 276,
 		"order": 1,
-		"offsetX": -180,
-		"offsetY": -290,
+		"offsetX": -175,
+		"offsetY": -292,
 		"enabled": true
 	},
 	"clockCard": {
