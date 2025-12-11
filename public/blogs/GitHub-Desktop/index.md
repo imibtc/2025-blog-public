@@ -21,27 +21,23 @@ git remote add upstream https://github.com/YYsuni/2025-blog-public.git
 
 ## 2. 把上游最新代码拉到本地
 
-先 Pull origin（把 origin 的 ? 条提交合并到本地）
-在 Desktop 点 Pull origin 即可或者输入命令：
-
-```bash
-git pull origin main
-```
-
-在同一命令行窗口继续输入：
-
 ```bash
 git fetch upstream
 ```
 
 出现 `remote: Counting objects...` 字样就是正在下载，等他完成。
 
+看看上游最新提交是啥：
+
+```bash
+git log upstream/main --oneline -5
+```
+
 ---
 
 ## 3. 合并到本地 main 分支
 
 ```bash
-git checkout main
 git merge upstream/main
 ```
 
