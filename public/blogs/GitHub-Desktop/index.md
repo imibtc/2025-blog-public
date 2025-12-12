@@ -48,7 +48,7 @@ git merge upstream/main
 
 ## 4. 解决冲突（仅限冲突时）
 
-1. 打开 GitHub Desktop，左侧会显示冲突文件和**会弹出必选文件**，点 ** → Open in Editor**（安装 VS Code：https://code.visualstudio.com/download）
+1. 打开 GitHub Desktop，左侧会显示冲突文件和**会弹出必选文件**，点 ** → Open in Editor**（安装 VS Code：https://code.visualstudio.com/download ）
 
 ```json
 在 VS Code 中将界面切换为中文，只需安装官方“Chinese (Simplified) Language Pack”扩展即可，步骤如下：
