@@ -7,7 +7,7 @@
 
 ## 1. 给仓库加上“上游”遥控器（只做一次）
 
-1. 打开 **GitHub Desktop**  官网下载 [GitHub Desktop](https://desktop.github.com)
+1. 打开 **GitHub Desktop**  官网下载：https://desktop.github.com
 2. 顶部菜单 → Repository → **Open in Command Prompt**（或 Git Bash）  
 3. 输入下面命令后回车：
 
@@ -48,7 +48,7 @@ git merge upstream/main
 
 ## 4. 解决冲突（仅限冲突时）
 
-1. 打开 GitHub Desktop，左侧会显示冲突文件，点 **右键 → Open in Editor**（或手动进 VS Code）。  
+1. 打开 GitHub Desktop，左侧会显示冲突文件或者会弹出，点 ** → Open in Editor**（或手动进 VS Code）。  
 2. 找到类似下面的标记：
 
 ```json
