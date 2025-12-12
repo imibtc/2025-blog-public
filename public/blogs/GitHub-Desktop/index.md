@@ -60,19 +60,12 @@ git merge upstream/main
 ```
 
 3. 把标记删掉，保留你想要的内容，**保存文件**。  
-4. 回到 Desktop，底部填写 Summary：
-
-```
-Merge upstream/main and resolve conflicts
-```
-
-5. 点 **Commit merge**。
 
 ---
 
 ## 5. 推回自己的 GitHub
 
-1. 在 Desktop 右上角点 **Push origin**（或命令行 `git push origin main`）。  
+1. 在 Desktop 右边 **Push origin**（或命令行 `git push origin main`）。  
 2. 推送成功后，打开网页版你自己的仓库，刷新看到：
 
 > This branch is even with `YYsuni:main`.
