@@ -75,7 +75,7 @@ git merge upstream/main
 
 ## 5. 推回自己的 GitHub
 
-1. 在 Desktop 右边 **Push origin**（或命令行 `git push origin main`）。  
+1. 在 Desktop 右边点击 **Push origin**（或命令行 `git push origin main`）。  
 2. 推送成功后，打开网页版你自己的仓库，刷新看到：
 
 > This branch is even with `YYsuni:main`.
