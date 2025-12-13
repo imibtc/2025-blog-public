@@ -18,9 +18,11 @@
       "Nano Banana",
       "提示词"
     ],
-    "date": "2025-12-09",
+    "date": "2025-12-09T08:00",
     "summary": "用非常可爱的黏土风格展示不同等级的标准和消耗时间",
-    "cover": "/blogs/NanoBanana-prompt/bf75362cf39afa63.webp"
+    "cover": "/blogs/NanoBanana-prompt/bf75362cf39afa63.webp",
+    "hidden": false,
+    "category": "AI"
   },
   {
     "slug": "GitHub-Desktop",
