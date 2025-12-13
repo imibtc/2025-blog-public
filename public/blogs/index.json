@@ -1,5 +1,18 @@
 [
   {
+    "slug": "NanoBanana-prompt2",
+    "title": "Nano Banana Pro提示词：用数字小镇展示你的屏幕使用时长",
+    "tags": [
+      "NanoBanana",
+      "提示词"
+    ],
+    "date": "2025-12-13T15:25",
+    "summary": "风格会跟随应用使用类型而变化，会有根据今天的应用使用情况带来的评语",
+    "cover": "/blogs/NanoBanana-prompt2/b9842194252f784c.webp",
+    "hidden": false,
+    "category": "AI"
+  },
+  {
     "slug": "Gemini-prompt",
     "title": "Gemini提示词：最近比较火的 “人物拆解”",
     "tags": [
