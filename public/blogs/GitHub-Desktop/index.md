@@ -7,7 +7,7 @@
 
 ## 1. 给仓库加上“上游”遥控器（只做一次）
 
-1. 打开 **GitHub Desktop**  官网下载 [GitHub Desktop](https://desktop.github.com)
+1. 打开 **GitHub Desktop**  官网下载：https://desktop.github.com
 2. 顶部菜单 → Repository → **Open in Command Prompt**（或 Git Bash）  
 3. 输入下面命令后回车：
 
@@ -48,8 +48,22 @@ git merge upstream/main
 
 ## 4. 解决冲突（仅限冲突时）
 
-1. 打开 GitHub Desktop，左侧会显示冲突文件，点 **右键 → Open in Editor**（或手动进 VS Code）。  
+1. 打开 GitHub Desktop，左侧会显示冲突文件和**会弹出必选文件**，点 ** → Open in Editor**（安装 VS Code：https://code.visualstudio.com/download ）
+
+```json
+在 VS Code 中将界面切换为中文，只需安装官方“Chinese (Simplified) Language Pack”扩展即可，步骤如下：
+1. 打开 VS Code
+2. 左侧活动栏点击“扩展”图标（或按 Ctrl+Shift+X）
+3. 搜索框输入：Chinese
+4. 找到 “Chinese (Simplified) Language Pack for Visual Studio Code” → 点击“安装”
+5. 安装完成后，右下角会弹出提示“重启以启用中文”，点击“重启”即可。
+```
+
 2. 找到类似下面的标记：
+
+```json
+采用当前更改|采用传入的更改|保留双方更改|比较变更
+```
 
 ```json
 <<<<<<< HEAD
@@ -59,20 +73,15 @@ git merge upstream/main
 >>>>>>> upstream/main
 ```
 
+
+
 3. 把标记删掉，保留你想要的内容，**保存文件**。  
-4. 回到 Desktop，底部填写 Summary：
-
-```
-Merge upstream/main and resolve conflicts
-```
-
-5. 点 **Commit merge**。
 
 ---
 
 ## 5. 推回自己的 GitHub
 
-1. 在 Desktop 右上角点 **Push origin**（或命令行 `git push origin main`）。  
+1. 在 Desktop 右边点击 **Push origin**（或命令行 `git push origin main`）。  
 2. 推送成功后，打开网页版你自己的仓库，刷新看到：
 
 > This branch is even with `YYsuni:main`.
