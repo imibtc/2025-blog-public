@@ -6,10 +6,11 @@
       "Gemini",
       "提示词"
     ],
-    "date": "2025-12-10",
+    "date": "2025-12-10T08:00",
     "summary": "这个是目前大家比较喜欢的一版，人物拆解",
     "cover": "/blogs/Gemini-prompt/f651b2e860ae04f4.webp",
-    "hidden": false
+    "hidden": false,
+    "category": "AI"
   },
   {
     "slug": "NanoBanana-prompt",
