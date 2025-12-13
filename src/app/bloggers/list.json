@@ -33,5 +33,12 @@
 		"url": "https://iplark.com/",
 		"description": "一个简洁的IP查询工具，界面极简，无需点击，刷新即更新，适合快速查看本机出口IP或校验代理是否生效。",
 		"stars": 4
+	},
+	{
+		"name": "药物说明书大全",
+		"avatar": "blob:https://www.hdxiaoke.top/4b187d17-e46f-4061-b307-f8479affdbfb",
+		"url": "http://drug.ptger.cn/",
+		"description": "搜索药品名称，根据批准文号找到对应药品，里面有详细的注意事项、用法用量等，出门在外很方便，如果有官方的先看官方的～",
+		"stars": 3
 	}
 ]
