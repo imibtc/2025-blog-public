@@ -50,22 +50,21 @@ export function BlogPreview({ markdown, title, tags, date, summary, cover, slug 
 					<div className='prose mt-6 max-w-none cursor-text'>{content}</div>
 
 	<div className='mt-12'>
-						<script
-							src="https://giscus.app/client.js"
-							data-repo="imibtc/2025-blog-public"
-							data-repo-id="R_kgDOQjHWcg"
-							data-category="General"
-							data-category-id="DIC_kwDOQjHWcs4CzxhY"
-							data-mapping="pathname"
-							data-strict="0"
-							data-reactions-enabled="1"
-							data-emit-metadata="0"
-							data-input-position="bottom"
-							data-theme="gruvbox_light"
-							data-lang="zh-CN"
-							crossorigin="anonymous"
-							async
-						/>				
+						<script src="https://giscus.app/client.js"
+        data-repo="imibtc/2025-blog-public"
+        data-repo-id="R_kgDOQjHWcg"
+        data-category="General"
+        data-category-id="DIC_kwDOQjHWcs4CzxhY"
+        data-mapping="pathname"
+        data-strict="0"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="bottom"
+        data-theme="gruvbox_light"
+        data-lang="zh-CN"
+        crossorigin="anonymous"
+        async>
+</script>
 				</div>
 			</motion.article>
 
