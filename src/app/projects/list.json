@@ -68,5 +68,17 @@
 			"手绘"
 		],
 		"github": "https://github.com/RanFeng/clipsketch-ai"
+	},
+	{
+		"name": "腾讯开源的高质量知识库",
+		"year": 2025,
+		"image": "blob:https://www.hdxiaoke.top/be9123ad-e944-4b24-8faf-a9f0def003e3",
+		"url": "https://weknora.weixin.qq.com/",
+		"description": "能够处理复杂的图文混排文档，理解表格、图片中的语义信息，并支持追溯答案出处，适合辅助写论文、企业内部知识管理等～\n",
+		"tags": [
+			"知识库",
+			"问答"
+		],
+		"github": "https://github.com/Tencent/WeKnora"
 	}
 ]
