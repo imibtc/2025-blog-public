@@ -1,5 +1,18 @@
 [
   {
+    "slug": "llm-ec",
+    "title": "LLM + 执行力，30-60 分钟上手任何东西。",
+    "tags": [
+      "LLM",
+      "执行力"
+    ],
+    "date": "2025-12-17T20:30",
+    "summary": "虽然夸张了，但是能让你从“完全不懂”变成“能聊两句、能判断值不值得学”。",
+    "cover": "/blogs/llm-ec/42b6877cd3ecd185.webp",
+    "hidden": false,
+    "category": "AI"
+  },
+  {
     "slug": "ai-photo",
     "title": "老照片修复",
     "tags": [
