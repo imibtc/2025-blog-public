@@ -80,5 +80,17 @@
 			"问答"
 		],
 		"github": "https://github.com/Tencent/WeKnora"
+	},
+	{
+		"name": "AI 全自动短视频引擎",
+		"year": 2025,
+		"image": "/images/project/0e0a7440cd5ca156.webp",
+		"url": "https://github.com/AIDC-AI/Pixelle-Video",
+		"description": "只需输入一个 主题，Pixelle-Video 就能自动完成：\n\n✍️ 撰写视频文案\n🎨 生成 AI 配图/视频\n🗣️ 合成语音解说\n🎵 添加背景音乐\n🎬 一键合成视频 ",
+		"tags": [
+			"AI",
+			"自动"
+		],
+		"github": "https://github.com/AIDC-AI/Pixelle-Video"
 	}
 ]
