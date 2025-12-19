@@ -36,7 +36,7 @@ export default function MusicCard() {
 
 		fetchAnalytics()
 		// 每30秒更新一次数据（缩短轮询间隔以实现更实时的显示）
-		const interval = setInterval(fetchAnalytics, 30 * 1000)
+		const interval = setInterval(fetchAnalytics, 5 * 60 * 1000)
 		return () => clearInterval(interval)
 	}, [])
 
