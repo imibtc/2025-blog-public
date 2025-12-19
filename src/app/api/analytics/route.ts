@@ -79,15 +79,19 @@ export async function GET() {
             const pageViews = httpRequests[0]?.sum?.pageViews || 0
             const uniqueVisitors = httpRequests[0]?.uniq?.uniques || 0
             
-            // 返回真实的访问统计数据
-            return NextResponse.json({
-              pageViews: pageViews,
-              uniqueVisitors: uniqueVisitors,
-              timestamp: new Date().toISOString(),
-              isMock: false,
-              message: '使用真实Cloudflare访问统计数据',
-              domain: domain || '未配置'
-            })
+            // 返回真实的访问统计数据，禁用缓存以确保每次刷新都能获取最新数据
+        return NextResponse.json({
+          pageViews: pageViews,
+          uniqueVisitors: uniqueVisitors,
+          timestamp: new Date().toISOString(),
+          isMock: false,
+          message: '使用真实Cloudflare访问统计数据',
+          domain: domain || '未配置'
+        }, {
+          headers: {
+            'Cache-Control': 'no-store, no-cache, must-revalidate, max-age=0'
+          }
+        })
           }
         }
         
@@ -108,6 +112,10 @@ export async function GET() {
       isMock: true,
       message: '未配置Cloudflare API或调用失败 - 显示随机生成的访问量数据',
       domain: domain || '未配置'
+    }, {
+      headers: {
+        'Cache-Control': 'no-store, no-cache, must-revalidate, max-age=0'
+      }
     })
   } catch (error) {
     console.error('获取访问统计失败:', error)
@@ -120,6 +128,11 @@ export async function GET() {
       isMock: true,
       message: '获取访问统计时发生错误',
       domain: process.env.NEXT_PUBLIC_DOMAIN || '未配置'
-    }, { status: 500 })
+    }, { 
+      status: 500,
+      headers: {
+        'Cache-Control': 'no-store, no-cache, must-revalidate, max-age=0'
+      }
+    })
   }
 }
