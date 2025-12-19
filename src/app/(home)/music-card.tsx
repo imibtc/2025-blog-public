@@ -20,21 +20,23 @@ export default function MusicCard() {
 
 	useEffect(() => {
 		// 获取访问统计数据
-		const fetchAnalytics = async () => {
-			try {
-				const response = await fetch('/api/analytics')
-				const data = await response.json()
-				if (data.pageViews) {
-					setPageViews(data.pageViews)
+			const fetchAnalytics = async () => {
+				try {
+					const response = await fetch('/api/analytics', {
+						cache: 'no-store' // 禁用浏览器缓存，确保每次都获取最新数据
+					})
+					const data = await response.json()
+					if (data.pageViews) {
+						setPageViews(data.pageViews)
+					}
+				} catch (error) {
+					console.error('获取访问统计失败:', error)
 				}
-			} catch (error) {
-				console.error('获取访问统计失败:', error)
 			}
-		}
 
 		fetchAnalytics()
-		// 每5分钟更新一次数据
-		const interval = setInterval(fetchAnalytics, 5 * 60 * 1000)
+		// 每30秒更新一次数据（缩短轮询间隔以实现更实时的显示）
+		const interval = setInterval(fetchAnalytics, 30 * 1000)
 		return () => clearInterval(interval)
 	}, [])
 
