@@ -8,6 +8,7 @@ import { CARD_SPACING } from '@/consts'
 import shareList from '@/app/share/list.json'
 import Link from 'next/link'
 import { HomeDraggableLayer } from './home-draggable-layer'
+import { useSize } from '@/hooks/use-size'
 
 type ShareItem = {
 	name: string
@@ -19,12 +20,14 @@ type ShareItem = {
 }
 
 export default function ShareCard() {
+	const { maxSM } = useSize()
 	const center = useCenterStore()
 	const { cardStyles } = useConfigStore()
 	const [randomItem, setRandomItem] = useState<ShareItem | null>(null)
 	const styles = cardStyles.shareCard
 	const hiCardStyles = cardStyles.hiCard
 	const socialButtonsStyles = cardStyles.socialButtons
+	const articleCardStyles = cardStyles.articleCard
 
 	useEffect(() => {
 		const randomIndex = Math.floor(Math.random() * shareList.length)
@@ -35,12 +38,28 @@ export default function ShareCard() {
 		return null
 	}
 
-	const x = styles.offsetX !== null ? center.x + styles.offsetX : center.x + hiCardStyles.width / 2 - socialButtonsStyles.width
-	const y = styles.offsetY !== null ? center.y + styles.offsetY : center.y + hiCardStyles.height / 2 + CARD_SPACING + socialButtonsStyles.height + CARD_SPACING
+	// 计算移动端位置（在ArticleCard下方）
+	const cardWidth = maxSM ? hiCardStyles.width : styles.width
+	const cardHeight = styles.height
+
+	let x, y;
+
+	if (maxSM) {
+		// 移动端：在ArticleCard下方，与ArticleCard对齐
+		const articleX = articleCardStyles.offsetX !== null ? center.x + articleCardStyles.offsetX : center.x - hiCardStyles.width / 2
+		const articleY = articleCardStyles.offsetY !== null ? center.y + articleCardStyles.offsetY : center.y + hiCardStyles.height / 2 + CARD_SPACING + socialButtonsStyles.height + CARD_SPACING
+			
+		x = articleX
+		y = articleY + articleCardStyles.height + CARD_SPACING
+	} else {
+		// 桌面端：保持原有位置
+		x = styles.offsetX !== null ? center.x + styles.offsetX : center.x + hiCardStyles.width / 2 - socialButtonsStyles.width
+		y = styles.offsetY !== null ? center.y + styles.offsetY : center.y + hiCardStyles.height / 2 + CARD_SPACING + socialButtonsStyles.height + CARD_SPACING
+	}
 
 	return (
-		<HomeDraggableLayer cardKey='shareCard' x={x} y={y} width={styles.width} height={styles.height}>
-			<Card order={styles.order} width={styles.width} height={styles.height} x={x} y={y}>
+		<HomeDraggableLayer cardKey='shareCard' x={x} y={y} width={cardWidth} height={cardHeight}>
+			<Card order={styles.order} width={cardWidth} height={cardHeight} x={x} y={y} className='space-y-2 max-sm:static'>
 				<h2 className='text-secondary text-sm'>随机分享</h2>
 
 				<Link href='/share' className='mt-2 block space-y-2'>
