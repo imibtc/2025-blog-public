@@ -74,18 +74,18 @@ export default function Home() {
 			)}
 
 			<div className='max-sm:flex max-sm:flex-col max-sm:items-center max-sm:gap-6 max-sm:pt-28 max-sm:pb-20'>
-				{cardStyles.artCard?.enabled !== false && <ArtCard />}
-				{cardStyles.hiCard?.enabled !== false && <HiCard />}
-				{!maxSM && cardStyles.clockCard?.enabled !== false && <ClockCard />}
-				{!maxSM && cardStyles.calendarCard?.enabled !== false && <CalendarCard />}
-				{!maxSM && cardStyles.musicCard?.enabled !== false && <MusicCard />}
-				{cardStyles.socialButtons?.enabled !== false && <SocialButtons />}
-				{cardStyles.articleCard?.enabled !== false && <AritcleCard />}
-				{cardStyles.shareCard?.enabled !== false && <ShareCard />}
-				{!maxSM && cardStyles.writeButtons?.enabled !== false && <WriteButtons />}
-				{cardStyles.likePosition?.enabled !== false && <LikePosition />}
-				{cardStyles.hatCard?.enabled !== false && <HatCard />}
-			</div>
+			{cardStyles.artCard?.enabled !== false && <ArtCard />}
+			{cardStyles.hiCard?.enabled !== false && <HiCard />}
+			{!maxSM && cardStyles.clockCard?.enabled !== false && <ClockCard />}
+			{!maxSM && cardStyles.calendarCard?.enabled !== false && <CalendarCard />}
+			{cardStyles.socialButtons?.enabled !== false && <SocialButtons />}
+			{cardStyles.articleCard?.enabled !== false && <AritcleCard />}
+			{cardStyles.shareCard?.enabled !== false && <ShareCard />}
+			{cardStyles.musicCard?.enabled !== false && <MusicCard />}
+			{!maxSM && cardStyles.writeButtons?.enabled !== false && <WriteButtons />}
+			{cardStyles.likePosition?.enabled !== false && <LikePosition />}
+			{cardStyles.hatCard?.enabled !== false && <HatCard />}
+		</div>
 			<ConfigDialog open={configDialogOpen} onClose={() => setConfigDialogOpen(false)} />
 		</>
 	)
