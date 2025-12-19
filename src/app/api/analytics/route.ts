@@ -16,7 +16,7 @@ export async function GET() {
         // Cloudflare GraphQL API端点
         const graphqlEndpoint = 'https://api.cloudflare.com/client/v4/graphql'
         
-        // 构造GraphQL查询 - 获取总页面访问量
+        // 构造GraphQL查询 - 获取页面访问量和唯一访客数
         // 注意：httpRequests1dGroups需要filter参数
         const query = `
           query GetPageViews {
@@ -31,6 +31,9 @@ export async function GET() {
                 ) {
                   sum {
                     pageViews
+                  }
+                  uniq {
+                    uniques
                   }
                   dimensions {
                     date
@@ -66,7 +69,7 @@ export async function GET() {
           throw new Error(`Cloudflare API错误: ${JSON.stringify(data.errors)}`)
         }
         
-        // 提取页面访问量数据
+        // 提取页面访问量和唯一访客数数据
         const zones = data?.data?.viewer?.zones
         
         if (zones && zones.length > 0) {
@@ -74,10 +77,12 @@ export async function GET() {
           
           if (httpRequests && httpRequests.length > 0) {
             const pageViews = httpRequests[0]?.sum?.pageViews || 0
+            const uniqueVisitors = httpRequests[0]?.uniq?.uniques || 0
             
             // 返回真实的访问统计数据
             return NextResponse.json({
               pageViews: pageViews,
+              uniqueVisitors: uniqueVisitors,
               timestamp: new Date().toISOString(),
               isMock: false,
               message: '使用真实Cloudflare访问统计数据',
@@ -94,9 +99,11 @@ export async function GET() {
     
     // 如果未配置Cloudflare API或调用失败，使用随机数作为备用
     const randomPageViews = Math.floor(Math.random() * 5000) + 55000
+    const randomUniqueVisitors = Math.floor(randomPageViews * 0.9) // 唯一访客数通常是页面浏览量的约90%
     
     return NextResponse.json({
       pageViews: randomPageViews,
+      uniqueVisitors: randomUniqueVisitors,
       timestamp: new Date().toISOString(),
       isMock: true,
       message: '未配置Cloudflare API或调用失败 - 显示随机生成的访问量数据',
@@ -108,6 +115,7 @@ export async function GET() {
     // 返回错误状态的响应
     return NextResponse.json({
       pageViews: 0,
+      uniqueVisitors: 0,
       timestamp: new Date().toISOString(),
       isMock: true,
       message: '获取访问统计时发生错误',
