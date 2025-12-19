@@ -78,3 +78,5 @@ export async function GET() {
       isMock: true,
       error: '使用模拟数据'
     })
+  }
+}
