@@ -6,21 +6,27 @@ import { CARD_SPACING } from '@/consts'
 import dayjs from 'dayjs'
 import Link from 'next/link'
 import { HomeDraggableLayer } from './home-draggable-layer'
+import { useSize } from '@/hooks/use-size'
 
 export default function ArticleCard() {
 	const center = useCenterStore()
 	const { cardStyles } = useConfigStore()
 	const { blog, loading } = useLatestBlog()
+	const { maxSM } = useSize()
 	const styles = cardStyles.articleCard
 	const hiCardStyles = cardStyles.hiCard
 	const socialButtonsStyles = cardStyles.socialButtons
+
+	// 在移动端将最新文章卡片宽度设置为与hiCard相同
+	const cardWidth = maxSM ? hiCardStyles.width : styles.width
+	const cardHeight = maxSM ? styles.height : styles.height
 
 	const x = styles.offsetX !== null ? center.x + styles.offsetX : center.x + hiCardStyles.width / 2 - socialButtonsStyles.width - CARD_SPACING - styles.width
 	const y = styles.offsetY !== null ? center.y + styles.offsetY : center.y + hiCardStyles.height / 2 + CARD_SPACING
 
 	return (
-		<HomeDraggableLayer cardKey='articleCard' x={x} y={y} width={styles.width} height={styles.height}>
-			<Card order={styles.order} width={styles.width} height={styles.height} x={x} y={y} className='space-y-2 max-sm:static'>
+		<HomeDraggableLayer cardKey='articleCard' x={x} y={y} width={cardWidth} height={cardHeight}>
+			<Card order={styles.order} width={cardWidth} height={cardHeight} x={x} y={y} className='space-y-2 max-sm:static'>
 				<h2 className='text-secondary text-sm'>最新文章</h2>
 
 				{loading ? (
