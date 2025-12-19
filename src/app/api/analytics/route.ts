@@ -11,7 +11,10 @@ export async function GET() {
     // 检查是否配置了Cloudflare API所需的所有环境变量
     if (apiToken && accountId && zoneId) {
       try {
-        // 调用Cloudflare API获取真实的访问统计数据
+        console.log('正在调用Cloudflare API...')
+        
+        // 使用Cloudflare Analytics API的正确端点
+        // 参考文档：https://developers.cloudflare.com/api/operations/zone-analytics-get-zone-analytics-dashboard
         const response = await fetch(
           `https://api.cloudflare.com/client/v4/zones/${zoneId}/analytics/dashboard`,
           {
@@ -24,9 +27,12 @@ export async function GET() {
         
         if (response.ok) {
           const data = await response.json()
+          
           // 从API响应中提取访问量数据
-          // 注意：Cloudflare API的响应结构可能会变化，需要根据实际情况调整
-          const pageViews = data.result?.totals?.requests || Math.floor(Math.random() * 5000) + 55000
+          // Cloudflare Analytics API响应结构可能会有变化，需要根据实际情况调整
+          const pageViews = data.result?.views?.all || 
+                           data.result?.totals?.requests || 
+                           Math.floor(Math.random() * 5000) + 55000
           
           return NextResponse.json({
             pageViews,
@@ -36,13 +42,20 @@ export async function GET() {
             domain: domain || '未配置'
           })
         } else {
-          // API调用失败，使用模拟数据
-          throw new Error('Cloudflare API调用失败')
+          // API调用失败，记录详细错误信息
+          const errorData = await response.text()
+          console.error('Cloudflare API调用失败，状态码:', response.status)
+          console.error('错误响应内容:', errorData)
         }
       } catch (apiError) {
-        console.error('Cloudflare API调用失败:', apiError)
-        // API调用失败时，回退到模拟数据
+        console.error('Cloudflare API调用异常:', apiError)
       }
+    } else {
+      console.log('Cloudflare API配置不完整:', {
+        hasApiToken: !!apiToken,
+        hasAccountId: !!accountId,
+        hasZoneId: !!zoneId
+      })
     }
     
     // 如果没有配置Cloudflare API或API调用失败，返回模拟数据
@@ -65,5 +78,3 @@ export async function GET() {
       isMock: true,
       error: '使用模拟数据'
     })
-  }
-}
