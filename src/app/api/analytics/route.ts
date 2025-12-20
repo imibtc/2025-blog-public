@@ -7,7 +7,6 @@ export async function GET() {
 
   if (!TOKEN || !ZONE_ID) return mockResponse()
 
-  /* 1. 正确变量签名  2. 累加 365 天 */
   const query = `
     query($zoneTag: String!) {
       viewer {
