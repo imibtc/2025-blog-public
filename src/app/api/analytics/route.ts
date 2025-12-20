@@ -1,14 +1,13 @@
-// src/app/api/analytics/route.ts  —— 最新调试版
+// src/app/api/analytics/route.ts
 import { NextResponse } from 'next/server'
 
 export async function GET() {
   const TOKEN   = process.env.CLOUDFLARE_API_TOKEN
   const ZONE_ID = process.env.CLOUDFLARE_ZONE_ID
 
-  if (!TOKEN || !ZONE_ID) {
-    return debugResponse({ error: '缺少环境变量' }, true)
-  }
+  if (!TOKEN || !ZONE_ID) return mockResponse()
 
+  /* 1. 正确的变量签名 + 类型声明  2. 累加 365 天 */
   const query = `
     query($zoneTag: String!) {
       viewer {
@@ -31,28 +30,33 @@ export async function GET() {
       body: JSON.stringify({ query, variables: { zoneTag: ZONE_ID } }),
     })
 
-    const txt = await res.text()
-    if (!res.ok) throw new Error(`HTTP ${res.status}  ${txt}`)
-
-    const json = JSON.parse(txt)
+    const json = await res.json()
     if (json.errors) throw new Error(JSON.stringify(json.errors))
 
     const groups = json.data?.viewer?.zones?.[0]?.httpRequests1dGroups
-    if (!groups || groups.length === 0) throw new Error('CF 返回空数组')
+    if (!groups || groups.length === 0) throw new Error('无数据')
 
     const pageViews = groups.reduce((a: number, g: any) => a + (g.sum.requests || 0), 0)
     const uniqueVisitors = groups.reduce((a: number, g: any) => a + (g.uniq.uniques || 0), 0)
 
-    return debugResponse({ pageViews, uniqueVisitors }, false)
+    return NextResponse.json({
+      pageViews,
+      uniqueVisitors,
+      isMock: false,
+      ts: new Date().toISOString(),
+    }, { headers: { 'Cache-Control': 'no-store' } })
   } catch (e: any) {
-    return debugResponse({ error: e.message }, true)
+    console.error(e)
+    return mockResponse()
   }
 }
 
-/* 统一返回，带 isMock 标记 */
-function debugResponse(obj: any, isMock: boolean) {
-  return NextResponse.json(
-    { ...obj, isMock, ts: new Date().toISOString() },
-    { headers: { 'Cache-Control': 'no-store' } },
-  )
+function mockResponse() {
+  const pv = Math.floor(Math.random() * 5000) + 120000
+  return NextResponse.json({
+    pageViews: pv,
+    uniqueVisitors: Math.floor(pv * 0.9),
+    isMock: true,
+    ts: new Date().toISOString(),
+  }, { headers: { 'Cache-Control': 'no-store' } })
 }
