@@ -7,22 +7,27 @@ export async function GET() {
     const accountId = process.env.CLOUDFLARE_ACCOUNT_ID
     const zoneId = process.env.CLOUDFLARE_ZONE_ID
     const domain = process.env.NEXT_PUBLIC_DOMAIN
+    
 
+    
     // 检查是否配置了Cloudflare API所需的所有环境变量
     if (apiToken && accountId && zoneId) {
       try {
         // Cloudflare GraphQL API端点
         const graphqlEndpoint = 'https://api.cloudflare.com/client/v4/graphql'
         
-        // 使用变量的GraphQL查询
+        // 构造GraphQL查询 - 获取页面访问量和唯一访客数
+        // 注意：httpRequests1dGroups需要filter参数
         const query = `
-          query GetPageViews($zoneTag: String!, $date: Date!) {
+          query GetPageViews {
             viewer {
-              zones(filter: { zoneTag: $zoneTag }) {
-                httpRequests1dGroups( // 修正：使用正确的字段名 `1d`
+              zones(filter: { zoneTag: "${zoneId}" }) {
+                httpRequests1dGroups(
                   limit: 1
                   orderBy: [date_DESC]
-                  filter: { date_geq: $date }
+                  filter: {
+                    date_geq: "2025-01-01"
+                  }
                 ) {
                   sum {
                     pageViews
@@ -37,14 +42,8 @@ export async function GET() {
               }
             }
           }
-        `;
-
-        // 定义GraphQL变量
-        const variables = {
-          zoneTag: zoneId,
-          date: "2025-01-01" // 可以考虑动态生成，例如：new Date().toISOString().split('T')[0]
-        };
-
+        `
+        
         // 调用Cloudflare GraphQL API
         const response = await fetch(graphqlEndpoint, {
           method: 'POST',
@@ -52,28 +51,35 @@ export async function GET() {
             'Content-Type': 'application/json',
             'Authorization': `Bearer ${apiToken}`,
           },
-          body: JSON.stringify({
-            query,
-            variables // 在请求体中发送变量
-          }),
+          body: JSON.stringify({ query }),
         })
-
-        // ... 其余部分（错误处理、响应解析等）保持不变 ...
+        
+        // 检查API响应状态
         if (!response.ok) {
-          const errorBody = await response.text()
-          throw new Error(`Cloudflare API请求失败: ${response.status} ${response.statusText} - ${errorBody}`)
+          // 尝试获取错误响应的详细信息
+        const errorBody = await response.text()
+        throw new Error(`Cloudflare API请求失败: ${response.status} ${response.statusText} - ${errorBody}`)
         }
         
+        // 解析API响应
         const data = await response.json()
         
+        // 检查API响应结构
         if (data.errors) {
           throw new Error(`Cloudflare API错误: ${JSON.stringify(data.errors)}`)
         }
         
+        // 提取页面访问量和唯一访客数数据
         const zones = data?.data?.viewer?.zones
-        // ... (数据提取逻辑保持不变) ...
-
-        // 返回真实的访问统计数据
+        
+        if (zones && zones.length > 0) {
+          const httpRequests = zones[0]?.httpRequests1dGroups
+          
+          if (httpRequests && httpRequests.length > 0) {
+            const pageViews = httpRequests[0]?.sum?.pageViews || 0
+            const uniqueVisitors = httpRequests[0]?.uniq?.uniques || 0
+            
+            // 返回真实的访问统计数据，禁用缓存以确保每次刷新都能获取最新数据
         return NextResponse.json({
           pageViews: pageViews,
           uniqueVisitors: uniqueVisitors,
@@ -86,16 +92,18 @@ export async function GET() {
             'Cache-Control': 'no-store, no-cache, must-revalidate, max-age=0'
           }
         })
-
+          }
+        }
+        
+        throw new Error('Cloudflare API响应结构不符合预期')
       } catch (apiError) {
         console.error('Cloudflare GraphQL API调用异常:', apiError)
-        // 这里可以记录更详细的日志，例如：console.error('API Error for zone:', zoneId, apiError);
       }
     }
     
-    // ... 降级到模拟数据的逻辑保持不变 ...
+    // 如果未配置Cloudflare API或调用失败，使用随机数作为备用
     const randomPageViews = Math.floor(Math.random() * 5000) + 55000
-    const randomUniqueVisitors = Math.floor(randomPageViews * 0.9)
+    const randomUniqueVisitors = Math.floor(randomPageViews * 0.9) // 唯一访客数通常是页面浏览量的约90%
     
     return NextResponse.json({
       pageViews: randomPageViews,
@@ -109,9 +117,10 @@ export async function GET() {
         'Cache-Control': 'no-store, no-cache, must-revalidate, max-age=0'
       }
     })
-    
   } catch (error) {
     console.error('获取访问统计失败:', error)
+    
+    // 返回错误状态的响应
     return NextResponse.json({
       pageViews: 0,
       uniqueVisitors: 0,
