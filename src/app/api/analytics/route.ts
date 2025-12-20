@@ -7,36 +7,21 @@ export async function GET() {
 
   if (!TOKEN || !ZONE_ID) return mockResponse()
 
-  const query = `
-    query($zoneTag: String!) {
-      viewer {
-        zones(filter: { zoneTag: $zoneTag }) {
-          httpRequests1dGroups(limit: 365) {
-            sum  { requests }
-            uniq { uniques }
-          }
-        }
-      }
-    }`
+  /* 取最近 365 天汇总（CF 只保留 365 天，这就是“累计”上限） */
+  const now   = Math.floor(Date.now() / 1000)
+  const since = now - 365 * 86400
+  const url   = `https://api.cloudflare.com/client/v4/zones/${ZONE_ID}/analytics/dashboard?since=${since}&until=${now}`
 
   try {
-    const res = await fetch('https://api.cloudflare.com/client/v4/graphql', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${TOKEN}`,
-      },
-      body: JSON.stringify({ query, variables: { zoneTag: ZONE_ID } }),
+    const res = await fetch(url, {
+      headers: { Authorization: `Bearer ${TOKEN}` },
     })
 
+    if (!res.ok) throw new Error(`HTTP ${res.status}`)
     const json = await res.json()
-    if (json.errors) throw new Error(JSON.stringify(json.errors))
 
-    const groups = json.data?.viewer?.zones?.[0]?.httpRequests1dGroups
-    if (!groups || groups.length === 0) throw new Error('无数据')
-
-    const pageViews = groups.reduce((a: number, g: any) => a + (g.sum.requests || 0), 0)
-    const uniqueVisitors = groups.reduce((a: number, g: any) => a + (g.uniq.uniques || 0), 0)
+    const pageViews      = json.result?.totals?.requests?.all ?? 0
+    const uniqueVisitors = json.result?.totals?.uniques?.all   ?? 0
 
     return NextResponse.json({
       pageViews,
