@@ -5,9 +5,12 @@ export async function GET() {
   const TOKEN   = process.env.CLOUDFLARE_API_TOKEN
   const ZONE_ID = process.env.CLOUDFLARE_ZONE_ID
 
-  if (!TOKEN || !ZONE_ID) return mockResponse()
+  /* 缺变量就 mock */
+  if (!TOKEN || !ZONE_ID) {
+    return mockResponse()
+  }
 
-  /* 1. 正确变量形式；2. 去掉多余 filter；3. 累加 365 天 */
+  /* GraphQL 查最近 365 天并累加 */
   const query = `
     query($zoneTag: String!) {
       viewer {
@@ -39,6 +42,7 @@ export async function GET() {
     const pageViews = groups.reduce((a: number, g: any) => a + (g.sum.requests || 0), 0)
     const uniqueVisitors = groups.reduce((a: number, g: any) => a + (g.uniq.uniques || 0), 0)
 
+    /* 关键：isMock 设成 false */
     return NextResponse.json({
       pageViews,
       uniqueVisitors,
@@ -51,6 +55,7 @@ export async function GET() {
   }
 }
 
+/* 降级 mock */
 function mockResponse() {
   const pv = Math.floor(Math.random() * 5000) + 120000
   return NextResponse.json({
@@ -59,4 +64,4 @@ function mockResponse() {
     isMock: true,
     ts: new Date().toISOString(),
   }, { headers: { 'Cache-Control': 'no-store' } })
-}
+        }
