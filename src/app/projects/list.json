@@ -92,5 +92,16 @@
 			"自动"
 		],
 		"github": "https://github.com/AIDC-AI/Pixelle-Video"
+	},
+	{
+		"name": "非常牛！知识库+外部数据源",
+		"year": 2025,
+		"image": "blob:https://www.hdxiaoke.top/45f83668-a55f-46d7-a55a-a7af96e373af",
+		"url": "https://github.com/MODSetter/SurfSense",
+		"description": "可以创建自己的个人知识库并连接外部多种数据源，包括油管、Notion、Gmail、Github等，得到更精确、更可靠的答案～\n",
+		"tags": [
+			"知识库"
+		],
+		"github": "https://github.com/MODSetter/SurfSense"
 	}
 ]
