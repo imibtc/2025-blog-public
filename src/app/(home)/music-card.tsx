@@ -17,7 +17,8 @@ export default function MusicCard() {
 	const calendarCardStyles = cardStyles.calendarCard
 	const shareCardStyles = cardStyles.shareCard
 	const articleCardStyles = cardStyles.articleCard
-	const [pageViews, setPageViews] = useState<number>(59832)
+	const [pageViews, setPageViews] = useState<number>(34) // 初始值与界面显示一致
+	const [isLoading, setIsLoading] = useState<boolean>(true)
 
 	// 计算位置
 	let x, y, cardWidth;
@@ -43,23 +44,69 @@ export default function MusicCard() {
 
 	useEffect(() => {
 		// 获取访问统计数据
-			const fetchAnalytics = async () => {
-				try {
-					const response = await fetch('/api/analytics', {
-						cache: 'no-store' // 禁用浏览器缓存，确保每次都获取最新数据
-					})
-					const data = await response.json()
-					if (data.pageViews) {
-						setPageViews(data.pageViews)
-					}
-				} catch (error) {
-					console.error('获取访问统计失败:', error)
-				}
-			}
+		const fetchAnalytics = async () => {
+			setIsLoading(true)
+			try {
+				// 从Cloudflare Worker获取统计数据
+				const response = await fetch('https://pageviews.hdxiaoke.workers.dev/list?slugs=total', {
+					method: 'GET',
+					headers: {
+						'Content-Type': 'application/json',
+					},
+					// 缩短缓存时间以便更快看到更新
+					cache: 'no-cache'
+				})
 
+				if (!response.ok) {
+					throw new Error(`Worker请求失败: ${response.status}`)
+				}
+
+				const data = await response.json()
+				
+				// Worker返回格式：{"total": 访问次数}
+				if (data.total !== undefined) {
+					setPageViews(data.total)
+				}
+				
+				// 记录本次访问（总访问量）
+				fetch('https://pageviews.hdxiaoke.workers.dev/pv?slug=total', {
+					method: 'PUT',
+					mode: 'cors', // 允许跨域
+					headers: {
+						'Content-Type': 'application/json',
+					},
+				}).catch(error => {
+					// 静默处理错误，不影响页面展示
+					console.log('记录总访问量失败（非致命错误）:', error.message)
+				})
+				
+				// 记录当前页面访问
+				const pageSlug = window.location.pathname.replace(/^\/|\/$/g, '') || 'home'
+				fetch(`https://pageviews.hdxiaoke.workers.dev/pv?slug=page-${encodeURIComponent(pageSlug)}`, {
+					method: 'PUT',
+					mode: 'cors',
+					headers: {
+						'Content-Type': 'application/json',
+					},
+				}).catch(error => {
+					// 静默处理错误
+					console.log('记录页面访问失败（非致命错误）:', error.message)
+				})
+				
+			} catch (error) {
+				console.error('获取访问统计失败:', error)
+				// 如果Worker失败，保留当前值不更新
+			} finally {
+				setIsLoading(false)
+			}
+		}
+
+		// 页面加载时立即获取
 		fetchAnalytics()
-		// 每30秒更新一次数据（缩短轮询间隔以实现更实时的显示）
-		const interval = setInterval(fetchAnalytics, 30 * 1000)
+		
+		// 每60秒更新一次数据（比原30秒长，因为Worker调用更快）
+		const interval = setInterval(fetchAnalytics, 60 * 1000)
+		
 		return () => clearInterval(interval)
 	}, [])
 
@@ -68,7 +115,31 @@ export default function MusicCard() {
 			<Card order={styles.order} width={cardWidth} height={styles.height} x={x} y={y} className='flex justify-center items-center max-sm:static'>
 				<div className='text-center'>
 					<div className='text-xs'>Copyright © 2025 伊米博客</div>
-					<div className='text-xs mt-1'>访问统计：{thousandsSeparator(pageViews)} 次</div>
+					<div className='text-xs mt-1'>
+						{isLoading ? (
+							<span className="text-gray-400">统计加载中...</span>
+						) : (
+							<span>访问统计：{thousandsSeparator(pageViews)} 次</span>
+						)}
+					</div>
+					{/* 可选：添加一个小的刷新按钮 */}
+					<button 
+						onClick={() => {
+							setIsLoading(true)
+							fetch('https://pageviews.hdxiaoke.workers.dev/list?slugs=total')
+								.then(res => res.json())
+								.then(data => {
+									if (data.total !== undefined) {
+										setPageViews(data.total)
+									}
+								})
+								.finally(() => setIsLoading(false))
+						}}
+						className="text-xs text-blue-400 hover:text-blue-600 mt-1 opacity-70 hover:opacity-100 transition-opacity"
+						title="手动刷新统计"
+					>
+						刷新
+					</button>
 				</div>
 			</Card>
 		</HomeDraggableLayer>
