@@ -3,9 +3,12 @@ import { useCenterStore } from '@/hooks/use-center'
 import { useConfigStore } from './stores/config-store'
 import { CARD_SPACING } from '@/consts'
 import { HomeDraggableLayer } from './home-draggable-layer'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useCallback } from 'react'
 import { thousandsSeparator } from '@/lib/utils'
 import { useSize } from '@/hooks/use-size'
+
+// Cloudflare Worker URL - 直接从图片中的Worker地址获取
+const WORKER_URL = 'https://pageviews.hdxiaoke.workers.dev'
 
 export default function MusicCard() {
 	const { maxSM } = useSize()
@@ -17,8 +20,8 @@ export default function MusicCard() {
 	const calendarCardStyles = cardStyles.calendarCard
 	const shareCardStyles = cardStyles.shareCard
 	const articleCardStyles = cardStyles.articleCard
-	const [pageViews, setPageViews] = useState<number>(34) // 初始值与界面显示一致
-	const [isLoading, setIsLoading] = useState<boolean>(true)
+	const [pageViews, setPageViews] = useState<number>(34) // 与界面显示一致
+	const [isLoading, setIsLoading] = useState<boolean>(false)
 
 	// 计算位置
 	let x, y, cardWidth;
@@ -42,73 +45,71 @@ export default function MusicCard() {
 		y = styles.offsetY !== null ? center.y + styles.offsetY : center.y - clockCardStyles.offset + CARD_SPACING + calendarCardStyles.height + CARD_SPACING
 	}
 
-	useEffect(() => {
-		// 获取访问统计数据
-		const fetchAnalytics = async () => {
-			setIsLoading(true)
-			try {
-				// 从Cloudflare Worker获取统计数据
-				const response = await fetch('https://pageviews.hdxiaoke.workers.dev/list?slugs=total', {
-					method: 'GET',
-					headers: {
-						'Content-Type': 'application/json',
-					},
-					// 缩短缓存时间以便更快看到更新
-					cache: 'no-cache'
-				})
+	// 获取统计数据的函数
+	const fetchPageViews = useCallback(async () => {
+		try {
+			// 从Worker获取总访问量
+			const response = await fetch(`${WORKER_URL}/list?slugs=total`, {
+				method: 'GET',
+				headers: { 'Content-Type': 'application/json' },
+				cache: 'no-store'
+			})
 
-				if (!response.ok) {
-					throw new Error(`Worker请求失败: ${response.status}`)
-				}
-
+			if (response.ok) {
 				const data = await response.json()
-				
-				// Worker返回格式：{"total": 访问次数}
 				if (data.total !== undefined) {
 					setPageViews(data.total)
 				}
-				
-				// 记录本次访问（总访问量）
-				fetch('https://pageviews.hdxiaoke.workers.dev/pv?slug=total', {
-					method: 'PUT',
-					mode: 'cors', // 允许跨域
-					headers: {
-						'Content-Type': 'application/json',
-					},
-				}).catch(error => {
-					// 静默处理错误，不影响页面展示
-					console.log('记录总访问量失败（非致命错误）:', error.message)
-				})
-				
-				// 记录当前页面访问
-				const pageSlug = window.location.pathname.replace(/^\/|\/$/g, '') || 'home'
-				fetch(`https://pageviews.hdxiaoke.workers.dev/pv?slug=page-${encodeURIComponent(pageSlug)}`, {
-					method: 'PUT',
-					mode: 'cors',
-					headers: {
-						'Content-Type': 'application/json',
-					},
-				}).catch(error => {
-					// 静默处理错误
-					console.log('记录页面访问失败（非致命错误）:', error.message)
-				})
-				
-			} catch (error) {
-				console.error('获取访问统计失败:', error)
-				// 如果Worker失败，保留当前值不更新
-			} finally {
-				setIsLoading(false)
 			}
+		} catch (error) {
+			console.error('获取访问统计失败:', error)
+		}
+	}, [])
+
+	// 记录访问的函数
+	const recordPageView = useCallback(async () => {
+		try {
+			// 记录总访问量
+			await fetch(`${WORKER_URL}/pv?slug=total`, {
+				method: 'PUT',
+				mode: 'cors',
+				headers: { 'Content-Type': 'application/json' }
+			})
+			
+			// 记录当前页面访问
+			const pageSlug = window.location.pathname.replace(/^\/|\/$/g, '') || 'home'
+			await fetch(`${WORKER_URL}/pv?slug=page-${encodeURIComponent(pageSlug)}`, {
+				method: 'PUT',
+				mode: 'cors',
+				headers: { 'Content-Type': 'application/json' }
+			})
+		} catch (error) {
+			// 静默失败，不影响用户体验
+			console.log('记录访问失败（不影响展示）:', error.message)
+		}
+	}, [])
+
+	useEffect(() => {
+		// 页面加载时：记录本次访问 + 获取最新数据
+		const initAnalytics = async () => {
+			setIsLoading(true)
+			
+			// 先记录本次访问
+			await recordPageView()
+			
+			// 然后获取最新数据
+			await fetchPageViews()
+			
+			setIsLoading(false)
 		}
 
-		// 页面加载时立即获取
-		fetchAnalytics()
+		initAnalytics()
 		
-		// 每60秒更新一次数据（比原30秒长，因为Worker调用更快）
-		const interval = setInterval(fetchAnalytics, 60 * 1000)
+		// 每2分钟更新一次显示（不需要频繁更新）
+		const interval = setInterval(fetchPageViews, 2 * 60 * 1000)
 		
 		return () => clearInterval(interval)
-	}, [])
+	}, [fetchPageViews, recordPageView])
 
 	return (
 		<HomeDraggableLayer cardKey='musicCard' x={x} y={y} width={cardWidth} height={styles.height}>
@@ -117,29 +118,11 @@ export default function MusicCard() {
 					<div className='text-xs'>Copyright © 2025 伊米博客</div>
 					<div className='text-xs mt-1'>
 						{isLoading ? (
-							<span className="text-gray-400">统计加载中...</span>
+							<span className="text-gray-400">统计中...</span>
 						) : (
-							<span>访问统计：{thousandsSeparator(pageViews)} 次</span>
+							<span>访问统计: {thousandsSeparator(pageViews)}次</span>
 						)}
 					</div>
-					{/* 可选：添加一个小的刷新按钮 */}
-					<button 
-						onClick={() => {
-							setIsLoading(true)
-							fetch('https://pageviews.hdxiaoke.workers.dev/list?slugs=total')
-								.then(res => res.json())
-								.then(data => {
-									if (data.total !== undefined) {
-										setPageViews(data.total)
-									}
-								})
-								.finally(() => setIsLoading(false))
-						}}
-						className="text-xs text-blue-400 hover:text-blue-600 mt-1 opacity-70 hover:opacity-100 transition-opacity"
-						title="手动刷新统计"
-					>
-						刷新
-					</button>
 				</div>
 			</Card>
 		</HomeDraggableLayer>
