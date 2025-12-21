@@ -65,45 +65,49 @@ export default function MusicCard() {
 		])
 	}, [])
 
+	// 唯一的一个 useEffect
 	useEffect(() => {
-	console.log('🔍 开始统计流程...')
-	
-	const initAnalytics = async () => {
-		try {
-			// 1. 先记录本次访问
-			console.log('📝 发送PUT请求记录访问...')
-			const putResponse = await fetch(`${WORKER_URL}/pv?slug=total`, {
-				method: 'PUT',
-				mode: 'cors',
-				headers: { 'Content-Type': 'application/json' }
-			})
+		console.log('🔍 开始统计流程...')
+		
+		const initAnalytics = async () => {
+			setIsLoading(true)
 			
-			console.log('PUT响应状态:', putResponse.status)
-			if (putResponse.ok) {
-				const putData = await putResponse.json()
-				console.log('✅ 访问记录成功:', putData)
-			} else {
-				console.error('❌ PUT请求失败:', putResponse.status)
+			try {
+				// 1. 先记录本次访问
+				console.log('📝 发送PUT请求记录访问...')
+				const putResponse = await fetch(`${WORKER_URL}/pv?slug=total`, {
+					method: 'PUT',
+					mode: 'cors',
+					headers: { 'Content-Type': 'application/json' }
+				})
+				
+				console.log('PUT响应状态:', putResponse.status)
+				if (putResponse.ok) {
+					const putData = await putResponse.json()
+					console.log('✅ 访问记录成功:', putData)
+				} else {
+					console.error('❌ PUT请求失败:', putResponse.status)
+				}
+				
+				// 2. 获取最新统计数据
+				console.log('📊 获取最新统计...')
+				const getResponse = await fetch(`${WORKER_URL}/list?slugs=total`)
+				console.log('GET响应状态:', getResponse.status)
+				
+				if (getResponse.ok) {
+					const getData = await getResponse.json()
+					console.log('📈 最新统计数据:', getData)
+					setPageViews(getData.total || 0)
+				}
+				
+			} catch (error) {
+				console.error('💥 统计流程出错:', error)
+			} finally {
+				setIsLoading(false)
 			}
-			
-			// 2. 获取最新统计数据
-			console.log('📊 获取最新统计...')
-			const getResponse = await fetch(`${WORKER_URL}/list?slugs=total`)
-			console.log('GET响应状态:', getResponse.status)
-			
-			if (getResponse.ok) {
-				const getData = await getResponse.json()
-				console.log('📈 最新统计数据:', getData)
-				setPageViews(getData.total || 0)
-			}
-			
-		} catch (error) {
-			console.error('💥 统计流程出错:', error)
 		}
-	}
 
-	initAnalytics()
-}, [])
+		initAnalytics()
 		
 		// 每3分钟更新一次显示
 		const interval = setInterval(fetchPageViews, 3 * 60 * 1000)
