@@ -22,7 +22,7 @@ type ShareItem = {
 export default function ShareCard() {
 	const { maxSM } = useSize()
 	const center = useCenterStore()
-	const { cardStyles } = useConfigStore()
+	const { cardStyles, siteContent } = useConfigStore()
 	const [randomItem, setRandomItem] = useState<ShareItem | null>(null)
 	const styles = cardStyles.shareCard
 	const hiCardStyles = cardStyles.hiCard
@@ -58,8 +58,19 @@ export default function ShareCard() {
 	}
 
 	return (
-		<HomeDraggableLayer cardKey='shareCard' x={x} y={y} width={cardWidth} height={cardHeight}>
-			<Card order={styles.order} width={cardWidth} height={cardHeight} x={x} y={y} className='space-y-2 max-sm:static'>
+		<HomeDraggableLayer cardKey='shareCard' x={x} y={y} width={styles.width} height={styles.height}>
+			<Card order={styles.order} width={styles.width} height={styles.height} x={x} y={y}>
+				{siteContent.enableChristmas && (
+					<>
+						<img
+							src='/images/christmas/snow-12.webp'
+							alt='Christmas decoration'
+							className='pointer-events-none absolute'
+							style={{ width: 120, left: -12, top: -12, opacity: 0.8 }}
+						/>
+					</>
+				)}
+
 				<h2 className='text-secondary text-sm'>随机分享</h2>
 
 				<Link href='/share' className='mt-2 block space-y-2'>
