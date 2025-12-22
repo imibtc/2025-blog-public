@@ -46,15 +46,15 @@
 		"height": 48,
 		"order": 6,
 		"offsetX": -159,
-		"offsetY": 219,
+		"offsetY": 218,
 		"enabled": true
 	},
 	"shareCard": {
 		"width": 280,
 		"height": 165,
 		"order": 7,
-		"offsetX": 206,
-		"offsetY": 174,
+		"offsetX": 207,
+		"offsetY": 175,
 		"enabled": true
 	},
 	"articleCard": {
@@ -62,7 +62,7 @@
 		"height": 165,
 		"order": 8,
 		"offsetX": -488,
-		"offsetY": 172,
+		"offsetY": 173,
 		"enabled": true
 	},
 	"writeButtons": {
@@ -77,8 +77,8 @@
 		"width": 280,
 		"height": 434,
 		"order": 2,
-		"offsetX": null,
-		"offsetY": null,
+		"offsetX": -490,
+		"offsetY": -294,
 		"enabled": true
 	},
 	"likePosition": {
@@ -101,8 +101,8 @@
 		"width": 280,
 		"height": 60,
 		"order": 11,
-		"offsetX": -97,
-		"offsetY": 275,
+		"offsetX": -135,
+		"offsetY": 280,
 		"enabled": true
 	}
 }
