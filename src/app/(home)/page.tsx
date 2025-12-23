@@ -84,12 +84,12 @@ export default function Home() {
 				{!maxSM && cardStyles.calendarCard?.enabled !== false && <CalendarCard />}
 				{!maxSM && cardStyles.musicCard?.enabled !== false && <MusicCard />}
 				{cardStyles.socialButtons?.enabled !== false && <SocialButtons />}
-				{!maxSM && cardStyles.shareCard?.enabled !== false && <ShareCard />}
 				{cardStyles.articleCard?.enabled !== false && <AritcleCard />}
+				{cardStyles.shareCard?.enabled !== false && <ShareCard />}
 				{!maxSM && cardStyles.writeButtons?.enabled !== false && <WriteButtons />}
-				{cardStyles.likePosition?.enabled !== false && <LikePosition />}
 				{cardStyles.hatCard?.enabled !== false && <HatCard />}
 				{cardStyles.beianCard?.enabled !== false && <BeianCard />}
+				{cardStyles.likePosition?.enabled !== false && <LikePosition />}
 			</div>
 
 			{siteContent.enableChristmas && <SnowfallBackground zIndex={2} count={!maxSM ? 125 : 20} />}

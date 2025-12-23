@@ -4,6 +4,7 @@ import { useConfigStore } from './stores/config-store'
 import { CARD_SPACING } from '@/consts'
 import Link from 'next/link'
 import { HomeDraggableLayer } from './home-draggable-layer'
+import { useSize } from '@/hooks/use-size'
 
 export default function BeianCard() {
 	const center = useCenterStore()
@@ -11,8 +12,13 @@ export default function BeianCard() {
 	const styles = cardStyles.beianCard
 	const hiCardStyles = cardStyles.hiCard
 	const articleCardStyles = cardStyles.articleCard
+	const { maxSM } = useSize()
 
-	const x = styles.offsetX !== null ? center.x + styles.offsetX : center.x + hiCardStyles.width / 2 - styles.width + 200
+	// 移动端使用与hiCard相同的宽度
+	const cardWidth = maxSM ? hiCardStyles.width : styles.width
+	const cardHeight = styles.height
+
+	const x = styles.offsetX !== null ? center.x + styles.offsetX : center.x + hiCardStyles.width / 2 - cardWidth + 200
 	const y = styles.offsetY !== null ? center.y + styles.offsetY : center.y + hiCardStyles.height / 2 + CARD_SPACING + 180
 
 	const beian = siteContent.beian
@@ -22,8 +28,8 @@ export default function BeianCard() {
 	}
 
 	return (
-		<HomeDraggableLayer cardKey='beianCard' x={x} y={y} width={styles.width} height={styles.height}>
-			<Card order={styles.order} width={styles.width} height={styles.height} x={x} y={y} className='flex items-center justify-center max-sm:static'>
+		<HomeDraggableLayer cardKey='beianCard' x={x} y={y} width={cardWidth} height={cardHeight}>
+			<Card order={styles.order} width={cardWidth} height={cardHeight} x={x} y={y} className='flex items-center justify-center max-sm:static'>
 				{beian.link ? (
 					<Link href={beian.link} target='_blank' rel='noopener noreferrer' className='text-secondary text-xs transition-opacity hover:opacity-80'>
 						{beian.text}

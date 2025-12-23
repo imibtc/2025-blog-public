@@ -25,8 +25,8 @@ export default function ArticleCard() {
 	const y = styles.offsetY !== null ? center.y + styles.offsetY : center.y + hiCardStyles.height / 2 + CARD_SPACING
 
 	return (
-		<HomeDraggableLayer cardKey='articleCard' x={x} y={y} width={styles.width} height={styles.height}>
-			<Card order={styles.order} width={styles.width} height={styles.height} x={x} y={y} className='space-y-2 max-sm:static'>
+		<HomeDraggableLayer cardKey='articleCard' x={x} y={y} width={cardWidth} height={cardHeight}>
+			<Card order={styles.order} width={cardWidth} height={cardHeight} x={x} y={y} className='space-y-2 max-sm:static'>
 				{siteContent.enableChristmas && (
 					<>
 						<img
