@@ -15,7 +15,8 @@ async function initTable() {
 /* 查询总访问量 */
 export async function GET(request: Request) {
   await initTable();
-  const { searchParams } = new URL(request.url);
+  const url = request.url || `https://${process.env.VERCEL_URL || 'localhost'}/api/neon`;
+const { searchParams } = new URL(url);
   const [{ count }] = await sql`SELECT COUNT(*) AS count FROM visits`;
   return new Response(JSON.stringify({ pv: Number(count) }), {
     status: 200,
