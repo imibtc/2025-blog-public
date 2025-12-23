@@ -2,7 +2,7 @@ import { neon } from '@neondatabase/serverless';
 
 const sql = neon(process.env.DATABASE_URL!);
 
-// 初始化表（没有就建）
+/* 初始化表（不存在就建） */
 async function initTable() {
   await sql`
     CREATE TABLE IF NOT EXISTS visits (
@@ -12,23 +12,23 @@ async function initTable() {
   `;
 }
 
+/* 查询总访问量 */
 export async function GET(request: Request) {
   await initTable();
   const { searchParams } = new URL(request.url);
-
-  // 总访问量
-  if (searchParams.get('type') === 'pv') {
-    const [{ count }] = await sql`SELECT COUNT(*) AS count FROM visits`;
-    return Response.json({ pv: Number(count) });
-  }
-
-  // 默认也返回 pv
   const [{ count }] = await sql`SELECT COUNT(*) AS count FROM visits`;
-  return Response.json({ pv: Number(count) });
+  return new Response(JSON.stringify({ pv: Number(count) }), {
+    status: 200,
+    headers: { 'Content-Type': 'application/json' },
+  });
 }
 
+/* 记录一次访问 */
 export async function POST() {
   await initTable();
   await sql`INSERT INTO visits DEFAULT VALUES`;
-  return Response.json({ ok: true });
+  return new Response(JSON.stringify({ ok: true }), {
+    status: 200,
+    headers: { 'Content-Type': 'application/json' },
+  });
 }
