@@ -11,8 +11,11 @@ async function initTable() {
   `;
 }
 
-export async function GET() {
+export async function GET(req: Request) {
   await initTable();
+  // 兼容 Next 16：req.url 可能为空，给备用地址
+  const url = req.url || `https://${process.env.VERCEL_URL || 'localhost'}/api/neon?type=pv`;
+  const { searchParams } = new URL(url);
   const [{ count }] = await sql`SELECT COUNT(*) AS count FROM visits`;
   return new Response(JSON.stringify({ pv: Number(count) }), {
     status: 200,
