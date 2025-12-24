@@ -40,15 +40,6 @@ export async function GET() {
     const totalVisitors = Number(visitorsResult[0]?.total_visitors) || 0;
     console.log(`✅ 总Visitors: ${totalVisitors}`);
     
-    // 3. 可选：获取总访问次数（Visits）
-    console.log('🔢 查询总Visits...');
-    const visitsResult = await sql`
-      SELECT COUNT(*) as total_visits
-      FROM session
-    `;
-    
-    const totalVisits = Number(visitsResult[0]?.total_visits) || 0;
-    console.log(`✅ 总Visits: ${totalVisits}`);
     
     return Response.json({ 
       views: totalViews,      // 总页面浏览量
