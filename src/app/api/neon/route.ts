@@ -2,6 +2,7 @@ import { neon } from '@neondatabase/serverless';
 
 const sql = neon(process.env.DATABASE_URL!);
 
+/* 初始化表 */
 async function initTable() {
   await sql`
     CREATE TABLE IF NOT EXISTS visits (
@@ -11,7 +12,7 @@ async function initTable() {
   `;
 }
 
-/* 总访问量 - 无 URL 兼容 */
+/* 总访问量 - 无 URL、无 request、无变量 */
 export async function GET() {
   await initTable();
   const [{ count }] = await sql`SELECT COUNT(*) AS count FROM visits`;
