@@ -1,9 +1,14 @@
 import { neon } from '@neondatabase/serverless';
 
-const sql = neon(process.env.DATABASE_URL!);
+// ==== 关键：添加这三行配置 ====
+export const dynamic = 'force-dynamic';
+export const revalidate = 0;
+export const fetchCache = 'force-no-store';
+// ============================
 
 /* 初始化表 */
 async function initTable() {
+  const sql = neon(process.env.DATABASE_URL!);
   await sql`
     CREATE TABLE IF NOT EXISTS visits (
       id SERIAL PRIMARY KEY,
@@ -30,6 +35,7 @@ export async function GET() {
 /* 记录访问 */
 export async function POST() {
   await initTable();
+  const sql = neon(process.env.DATABASE_URL!);
   await sql`INSERT INTO visits DEFAULT VALUES`;
   return new Response(JSON.stringify({ ok: true }), {
     status: 200,
