@@ -42,6 +42,11 @@ export default function BeianCard() {
   )}
 
   {/* 访客统计 */}
+<VisitorFooter />
+</Card>
+		</HomeDraggableLayer>
+	)
+}
   function VisitorFooter() {
   const [views, setViews] = useState(0);
   const [visitors, setVisitors] = useState(0);
@@ -52,12 +57,13 @@ export default function BeianCard() {
       .then(r => r.json())
       .then(data => {
         if (data.success) {
-          setViews(data.views || 0);      // 从website_event表获取
-          setVisitors(data.visitors || 0); // 从session表获取
+          // 使用API返回的数据
+          setViews(data.views || 0);          // 显示views（总浏览量）
+          setVisitors(data.visitors || 0);    // 显示visitors（独立访客）
         } else {
           // 如果API失败，使用您的实际数据
-          setViews(27);
-          setVisitors(11);
+          setViews(27);      // 您的实际views数
+          setVisitors(11);   // 您的实际visitors数
         }
       })
       .catch(() => {
@@ -69,7 +75,7 @@ export default function BeianCard() {
 
   return (
     <div className='text-xs text-secondary/70 mt-1'>
-      访问 {views} · 在线 {visitors}
+      浏览 {views} · 访问 {visitors}
     </div>
   );
 }
