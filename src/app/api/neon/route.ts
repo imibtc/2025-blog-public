@@ -12,14 +12,19 @@ async function initTable() {
   `;
 }
 
-/* 总访问量 - 无 URL、无 request、无变量 */
 export async function GET() {
-  await initTable();
-  const [{ count }] = await sql`SELECT COUNT(*) AS count FROM visits`;
-  return new Response(JSON.stringify({ pv: Number(count) }), {
-    status: 200,
-    headers: { 'Content-Type': 'application/json' },
-  });
+  // 直接返回 PV 数据，不检查查询参数
+  try {
+    if (!process.env.DATABASE_URL) {
+      return Response.json({ pv: 0, success: true });
+    }
+    
+    const sql = neon(process.env.DATABASE_URL);
+    const result = await sql`SELECT COUNT(*) AS count FROM visits`;
+    return Response.json({ pv: Number(result[0]?.count || 0), success: true });
+  } catch (error) {
+    return Response.json({ pv: 0, success: true });
+  }
 }
 
 /* 记录访问 */
