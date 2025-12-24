@@ -1,29 +1,76 @@
+// /src/app/api/neon/route.ts
+import { neon } from '@neondatabase/serverless';
+
+// 强制动态渲染
+export const dynamic = 'force-dynamic';
+
 export async function GET() {
   try {
-    const sql = neon(process.env.DATABASE_URL!);
+    // 检查数据库连接配置
+    if (!process.env.DATABASE_URL) {
+      console.error('❌ DATABASE_URL 环境变量未设置');
+      return Response.json({ 
+        views: 0,
+        visitors: 0,
+        success: false,
+        error: 'DATABASE_URL_NOT_CONFIGURED'
+      });
+    }
     
-    // 查询总Views（不加时间限制）
+    console.log('🔄 开始查询数据库总统计...');
+    const sql = neon(process.env.DATABASE_URL);
+    
+    // 1. 获取总页面浏览量（Views）- 查询 website_event 表
+    console.log('📊 查询总Views...');
     const viewsResult = await sql`
-      SELECT COUNT(*) as views
+      SELECT COUNT(*) as total_views
       FROM website_event
     `;
     
-    // 查询总Visitors（不加时间限制）
+    const totalViews = Number(viewsResult[0]?.total_views) || 0;
+    console.log(`✅ 总Views: ${totalViews}`);
+    
+    // 2. 获取总独立访客数（Visitors）- 查询 session 表
+    console.log('👥 查询总Visitors...');
     const visitorsResult = await sql`
-      SELECT COUNT(DISTINCT session_id) as visitors
+      SELECT COUNT(DISTINCT session_id) as total_visitors
       FROM session
     `;
     
+    const totalVisitors = Number(visitorsResult[0]?.total_visitors) || 0;
+    console.log(`✅ 总Visitors: ${totalVisitors}`);
+    
+    // 3. 可选：获取总访问次数（Visits）
+    console.log('🔢 查询总Visits...');
+    const visitsResult = await sql`
+      SELECT COUNT(*) as total_visits
+      FROM session
+    `;
+    
+    const totalVisits = Number(visitsResult[0]?.total_visits) || 0;
+    console.log(`✅ 总Visits: ${totalVisits}`);
+    
     return Response.json({ 
-      views: Number(viewsResult[0]?.views) || 0,  // 总浏览量
-      visitors: Number(visitorsResult[0]?.visitors) || 0, // 总独立访客
-      success: true 
+      views: totalViews,      // 总页面浏览量
+      visitors: totalVisitors, // 总独立访客数
+      visits: totalVisits,     // 总访问次数
+      success: true,
+      timestamp: new Date().toISOString(),
+      data_type: 'total'       // 标记这是总数据
     });
-  } catch (error) {
+    
+  } catch (error: any) {
+    console.error('❌ 数据库查询失败:', error);
+    
+    // 返回0但包含错误信息
     return Response.json({ 
       views: 0,
       visitors: 0,
-      success: false 
+      visits: 0,
+      success: false,
+      error: error.message,
+      error_type: error.constructor.name,
+      timestamp: new Date().toISOString()
     });
   }
 }
