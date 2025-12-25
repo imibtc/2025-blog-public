@@ -156,3 +156,16 @@ export const GITHUB_CONFIG = {
 
 ### 9.4 导航栏修改
 `src/components/nav-card.tsx`
+
+### 9.5 Favatar.png图片不能显示（EO 500 报错）
+`next.config.ts` 这个文件 增加：
+
+```
+    // ▼▼▼ 新增配置：关闭图片优化，修复 EO 500 报错 ▼▼▼
+
+    images: {
+        unoptimized: true
+    },
+
+    // ▲▲▲ 新增结束 ▲▲▲
+```
