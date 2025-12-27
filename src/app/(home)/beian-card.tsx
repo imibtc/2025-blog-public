@@ -47,19 +47,19 @@ export default function BeianCard() {
 		</HomeDraggableLayer>
 	)
 }
-  function VisitorFooter() {
+
+function VisitorFooter() {
   const [views, setViews] = useState(0);
   const [visitors, setVisitors] = useState(0);
-  const [days, setDays] = useState(0);
+  const [uptime, setUptime] = useState('');
 
   useEffect(() => {
-    // 1. 浏览 & 访客
     fetch('/api/neon')
       .then(r => r.json())
-      .then(d => {
-        if (d.success) {
-          setViews(d.views || 0);
-          setVisitors(d.visitors || 0);
+      .then(data => {
+        if (data.success) {
+          setViews(data.views || 0);
+          setVisitors(data.visitors || 0);
         } else {
           setViews(10000);
           setVisitors(500);
@@ -70,27 +70,22 @@ export default function BeianCard() {
         setVisitors(500);
       });
 
-    // 2. 运行天数
-    const start = new Date('2025-12-06T00:00:00');
-    const calc = () =>
-      setDays(Math.floor((Date.now() - start.getTime()) / 86400000));
-    calc();
-    const id = setInterval(calc, 3600000); // 每小时更新一次足够
+    const start = new Date('2025-01-01T00:00:00').getTime();
+    const tick = () => {
+      const days = Math.floor((Date.now() - start) / 86400000);
+      setUptime(`${days} 天`);
+    };
+    tick();
+    const id = setInterval(tick, 3600000);
     return () => clearInterval(id);
   }, []);
 
   return (
-    <div className="mt-2 flex items-center gap-2 text-[11px] text-gray-400">
-      <span className="rounded-full bg-gray-100 px-2 py-0.5 text-gray-600 hover:bg-gray-200 transition">
-        运行 {days} 天
-      </span>
-      <span className="text-gray-300">•</span>
-      <span className="rounded-full bg-gray-100 px-2 py-0.5 text-gray-600 hover:bg-gray-200 transition">
-        浏览 {views}
-      </span>
-      <span className="text-gray-300">•</span>
-      <span className="rounded-full bg-gray-100 px-2 py-0.5 text-gray-600 hover:bg-gray-200 transition">
-        访问 {visitors}
+    <div className='text-xs text-secondary/70 mt-1'>
+      运行时间 {uptime} · 浏览 {views} · 访问 {visitors}
+    </div>
+  );
+}
       </span>
     </div>
   );
