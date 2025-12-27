@@ -6,21 +6,8 @@
 
 ![](/blogs/readme/f8fb1af7c34a8cf8.webp)
 
-## 1. 环境变量(下面要用到)
 
-具体变量名请看下列大写变量
-
-```ts
-export const GITHUB_CONFIG = {
-	OWNER: process.env.NEXT_PUBLIC_GITHUB_OWNER || 'yysuni',
-	REPO: process.env.NEXT_PUBLIC_GITHUB_REPO || '2025-blog-public',
-	BRANCH: process.env.NEXT_PUBLIC_GITHUB_BRANCH || 'main',
-	APP_ID: process.env.NEXT_PUBLIC_GITHUB_APP_ID || '-'
-} as const
-```
-
-
-## 2. 部署
+## 1. 部署
 
 https://vercel.com/
 
@@ -36,7 +23,7 @@ https://vercel.com/
 
 到这里部署网站已经完成了，下一步创建 Github App
 
-## 3. 创建 Github App 链接仓库
+## 2. 创建 Github App 链接仓库
 
 在 github 个人设置里面，找到最下面的 Developer Settings ，点击进入
 
@@ -77,6 +64,13 @@ https://vercel.com/
 
 直接输入这几个环境变量值就行，一般只用设置 OWNER 和 APP_ID。其它配置不用管，直接输入创建就行。
 
+``` 
+NEXT_PUBLIC_GITHUB_OWNER： yysuni （你的用户名）
+	
+NEXT_PUBLIC_GITHUB_APP_ID ： 123456（填写你的ID）
+
+```
+
 ![](/blogs/readme/c5a049d737848abf.png)
 
 设置完成后，需要手动再部署一次，让环境变量生效。
@@ -84,41 +78,41 @@ https://vercel.com/
 * 也可以手动选择创建一次部署
 ![](/blogs/readme/59a802ed8d1c3a13.png)
 
-## 4. 完成
+## 3. 完成
 
 现在，部署的这个网站就可以开始使用前端改内容了。比如更改一个分享内容。
 
 **提示**，网站前端页面删改完提示成功之后，你需要等待后台的部署完成，再刷新页面才能完成服务器内容的更新哦。
 
-## 5. 删除
+## 4. 删除
 
 使用这个项目应该第一件事需要删除我的 blog，单独删除，批量删除已完成。
 
-## 6. 配置
+## 5. 配置
 
 大部分页面右上角都会有一个编辑按钮，意味着你可以使用 **private key** 进行配置部署。
 
-### 6.1 网站配置
+### 5.1 网站配置
 
 首页有一个不显眼的配置按钮，点击就能看到现在可以配置的内容。
 
 ![](/blogs/readme/cddb4710e08a5069.png)
 
-## 7. 写 blog
+## 6. 写 blog
 
 写 blog 的图片管理，可能会有疑惑。图片管理推荐逻辑是先点击 **+ 号** 添加图片，（推荐先压缩好，尺寸推荐宽度不超过 1200）。然后将上传好的图片直接拖入文案编辑区，这就已经添加好了，点击右上角预览就可以看到效果。
 
-## 8. 写给非前端
+## 7. 写给非前端
 
 非前端配置内容，还是需要一个文件指引。下面写一些更细致的代码配置。
 
-### 8.1 移除 Liquid Grass（已移除）
+### 7.1 移除 Liquid Grass（已移除）
 
 > 已移动至相关文章中显示，图例已过时
 
 ![](/blogs/readme/f70ff3fe3a77f193.png)
 
-### 8.2 配置首页内容
+### 7.2 配置首页内容
 
 首页的内容现在只能前端配置一部分，所以代码更改在 `src/app/(home)` 目录，这个目录代表首页所有文件。首页的具体文件为  `src/app/(home)/page.tsx`
 
@@ -136,31 +130,31 @@ https://vercel.com/
 
 ![](/blogs/readme/9780c38f886322fd.png)
 
-### 8.3 移除 blog 列表的更多按钮（361-375）
+### 7.3 移除 blog 列表的更多按钮（361-375）
 
 `src/app/blog/page.tsx` 文件，下图位置，删除这部分代码。
 
 ![](/blogs/readme/a190410a273b2bea.png)
 
-## 9. 其他
+## 8. 其他
 
 收集整理其他问题参考
 
-### 9.1 文章-文件夹的位置
+### 8.1 文章-文件夹的位置
 `public/blog` 每个文件夹是一篇文章
 
-### 9.2 隐藏“推荐分享”里的“星级评分”
+### 8.2 隐藏“推荐分享”里的“星级评分”
 `src/app/share/components/share-card.tsx` 把 137~141 代码删除，换成 `{/* 隐藏星级评分 */}`
 
 ![](/blogs/readme/c8420a1f2e761ef3.webp)
 
-### 9.3 新建文章-提示出错
+### 8.3 新建文章-提示出错
 有可能是编辑文章后缀名时加了空格
 
-### 9.4 导航栏修改
+### 8.4 导航栏修改
 `src/components/nav-card.tsx`
 
-### 9.5 Favatar.png图片不能显示（EO 500 报错）
+### 8.5 Favatar.png图片不能显示（EO 500 报错）
 `next.config.ts` 这个文件 增加：
 
 ```
