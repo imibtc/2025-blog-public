@@ -47,7 +47,6 @@ export default function BeianCard() {
 		</HomeDraggableLayer>
 	)
 }
-
 function VisitorFooter() {
   const [views, setViews] = useState(0);
   const [visitors, setVisitors] = useState(0);
@@ -70,7 +69,7 @@ function VisitorFooter() {
         setVisitors(500);
       });
 
-    const start = new Date('2025-01-01T00:00:00').getTime();
+    const start = new Date('2025-12-06T00:00:00').getTime();
     const tick = () => {
       const days = Math.floor((Date.now() - start) / 86400000);
       setUptime(`${days} 天`);
@@ -83,10 +82,6 @@ function VisitorFooter() {
   return (
     <div className='text-xs text-secondary/70 mt-1'>
       运行时间 {uptime} · 浏览 {views} · 访问 {visitors}
-    </div>
-  );
-}
-      </span>
     </div>
   );
 }
