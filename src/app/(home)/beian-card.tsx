@@ -50,32 +50,44 @@ export default function BeianCard() {
   function VisitorFooter() {
   const [views, setViews] = useState(0);
   const [visitors, setVisitors] = useState(0);
+  const [uptime, setUptime] = useState('');   // 新增：运行时间字符串
 
   useEffect(() => {
-    // 调用API获取views和visitors
+    // 1. 取浏览量 & 访客数
     fetch('/api/neon')
       .then(r => r.json())
       .then(data => {
         if (data.success) {
-          // 使用API返回的数据
-          setViews(data.views || 0);          // 显示views（总浏览量）
-          setVisitors(data.visitors || 0);    // 显示visitors（独立访客）
+          setViews(data.views || 0);
+          setVisitors(data.visitors || 0);
         } else {
-          // 如果API失败，使用您的实际数据
-          setViews(10000);      // 您的实际views数
-          setVisitors(500);   // 您的实际visitors数
+          setViews(10000);
+          setVisitors(500);
         }
       })
       .catch(() => {
-        // 网络错误时使用默认值
         setViews(10000);
         setVisitors(500);
       });
+
+    // 2. 计算运行时间（示例：从 2025-01-01 00:00:00 开始）
+    const start = new Date('2025-01-01T00:00:00').getTime();
+    const tick = () => {
+      const now = Date.now();
+      const diff = now - start;
+      const days = Math.floor(diff / 86400000);
+      const hours = Math.floor((diff % 86400000) / 3600000);
+      const mins = Math.floor((diff % 3600000) / 60000);
+      setUptime(`${days} 天 ${hours} 小时 ${mins} 分钟`);
+    };
+    tick();                // 立即执行一次
+    const id = setInterval(tick, 60000); // 每分钟刷新
+    return () => clearInterval(id);
   }, []);
 
   return (
     <div className='text-xs text-secondary/70 mt-1'>
-      浏览 {views} · 访问 {visitors}
+      运行时间 {uptime} · 浏览 {views} · 访问 {visitors}
     </div>
   );
 }
