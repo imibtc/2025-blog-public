@@ -71,7 +71,7 @@ export default function BeianCard() {
       });
 
     // 2. 计算运行时间（示例：从 2025-01-01 00:00:00 开始）
-    const start = new Date('2025-01-01T00:00:00').getTime();
+    const start = new Date('2025-12-06T00:00:00').getTime();
     const tick = () => {
       const now = Date.now();
       const diff = now - start;
@@ -87,7 +87,7 @@ export default function BeianCard() {
 
   return (
     <div className='text-xs text-secondary/70 mt-1'>
-      运行时间 {uptime} · 浏览 {views} · 访问 {visitors}
+    {uptime} · 浏览 {views} · 访问 {visitors}
     </div>
   );
 }
