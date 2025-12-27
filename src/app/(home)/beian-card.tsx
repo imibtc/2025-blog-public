@@ -81,7 +81,7 @@ function VisitorFooter() {
 
   return (
     <div className='text-xs text-secondary/70 mt-1'>
-      运行时间 {uptime} · 浏览 {views} · 访问 {visitors}
+      运行 {uptime} · 浏览 {views} · 访问 {visitors}
     </div>
   );
 }
