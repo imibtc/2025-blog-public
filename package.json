@@ -33,7 +33,7 @@
     "ts-debounce": "^4.0.0",
     "zustand": "^5.0.8",
     "@neondatabase/serverless": "^0.4.0",
-    "@waline/client
+    "@waline/client": "^3.0.0"
   },
   "devDependencies": {
     "@svgr/webpack": "^8.1.0",
