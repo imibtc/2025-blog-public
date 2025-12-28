@@ -53,7 +53,7 @@ export function BlogPreview({ markdown, title, tags, date, summary, cover, slug 
 
 					{/* 评论组件 - 直接在文章内容之后 */}
 					{slug && (
-						<div className='mt-12 pt-8 border-t'>
+						<div className='mt-12'>
 							<WalineComments path={`/blog/${slug}`} />
 						</div>
 					)}
