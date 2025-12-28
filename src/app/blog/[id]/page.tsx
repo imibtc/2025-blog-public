@@ -8,6 +8,7 @@ import { BlogPreview } from '@/components/blog-preview'
 import { loadBlog, type BlogConfig } from '@/lib/load-blog'
 import { useReadArticles } from '@/hooks/use-read-articles'
 import LiquidGrass from '@/components/liquid-grass'
+import WalineComments from '@/components/WalineComments'  // 新增导入
 
 export default function Page() {
 	const params = useParams() as { id?: string | string[] }
@@ -91,6 +92,9 @@ export default function Page() {
 			</motion.button>
 
 			{slug === 'liquid-grass' && <LiquidGrass />}
+			
+			{/* 新增：Waline 评论组件 */}
+			<WalineComments path={`/blog/${slug}`} />
 		</>
 	)
 }
