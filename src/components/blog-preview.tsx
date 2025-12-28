@@ -6,6 +6,7 @@ import { useMarkdownRender } from '@/hooks/use-markdown-render'
 import { useSize } from '@/hooks/use-size'
 import { BlogSidebar } from '@/components/blog-sidebar'
 import { useConfigStore } from '@/app/(home)/stores/config-store'
+import WalineComments from '@/components/WalineComments'  // 新增导入
 
 type BlogPreviewProps = {
 	markdown: string
@@ -47,7 +48,15 @@ export function BlogPreview({ markdown, title, tags, date, summary, cover, slug 
 
 					{summary && summaryInContent && <div className='text-secondary mt-6 cursor-text text-center text-sm'>“{summary}”</div>}
 
+					{/* 文章内容 */}
 					<div className='prose mt-6 max-w-none cursor-text'>{content}</div>
+
+					{/* 评论组件 - 直接在文章内容之后 */}
+					{slug && (
+						<div className='mt-12 pt-8 border-t'>
+							<WalineComments path={`/blog/${slug}`} />
+						</div>
+					)}
 				</div>
 			</motion.article>
 
