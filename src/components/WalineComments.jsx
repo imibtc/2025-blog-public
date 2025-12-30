@@ -27,6 +27,9 @@ export default function WalineComments({ path }) {
 
       // 开启评论数统计
       comment: true,
+
+      // 禁用上传
+      imageUploader: false,
       
       // 匿名评论配置
       anonymous: true, // 允许匿名评论
