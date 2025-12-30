@@ -36,7 +36,7 @@ export default function WalineComments({ path }) {
       requiredMeta: ['nick', 'mail'], // 必填字段：昵称和邮箱
       
       // 自定义配置
-      placeholder: '欢迎留言！支持 Markdown 语法哦~',
+      placeholder: '欢迎留言！(填写邮箱可在被回复时收到邮件提醒)',
       avatar: 'mp', // 头像生成方式
       meta: ['nick', 'mail', 'link'], // 显示的表单字段
       pageSize: 10, // 每页评论数
