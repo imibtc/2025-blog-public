@@ -24,6 +24,9 @@ export default function WalineComments({ path }) {
       reaction: false, // 启用表情反应
       search: false, // 禁用搜索（简化版）
       login: 'disable', // 完全禁用登录，纯匿名评论
+
+      // 开启评论数统计
+      comment: true,
       
       // 匿名评论配置
       anonymous: true, // 允许匿名评论
