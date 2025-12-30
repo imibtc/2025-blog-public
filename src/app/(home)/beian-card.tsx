@@ -84,20 +84,13 @@ function VisitorFooter() {
       });
 
     // 2. 获取评论总数
-    fetch('https://comments.hdxiaoke.top/api/comment/count')
-      .then(r => r.json())
-      .then(data => {
-        // Waline API 返回格式: {data: 总评论数}
-        if (data && typeof data === 'number') {
-          setComments(data);
-        } else if (data && data.data) {
-          setComments(data.data);
-        }
-      })
-      .catch((error) => {
-        console.warn('获取评论数失败:', error);
-        setComments(0);
-      });
+    fetch('/api/comment-count')
+  .then(r => r.json())
+  .then(data => {
+    if (data.success) {
+      setComments(data.count);
+    }
+  });
 
     // 3. 计算运行天数
     const start = new Date('2025-12-06T00:00:00').getTime();
