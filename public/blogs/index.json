@@ -1,5 +1,18 @@
 [
   {
+    "slug": "Waline",
+    "title": "Waline 评论系统完整安装教程",
+    "tags": [
+      "评论",
+      "Waline"
+    ],
+    "date": "2025-12-30T20:42",
+    "summary": "教程有点简略，涉及到的文中代码，里面有关于我“访问统计”的相关代码，所以只是参考。",
+    "cover": "/blogs/Waline/e27573edc9462a8d.webp",
+    "hidden": false,
+    "category": "开源"
+  },
+  {
     "slug": "neondatabase-serverless",
     "title": "2025-blog-public 添加 @neondatabase/serverless依赖",
     "tags": [
