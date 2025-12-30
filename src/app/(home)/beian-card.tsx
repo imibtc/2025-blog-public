@@ -84,12 +84,19 @@ function VisitorFooter() {
       });
 
     // 2. 获取评论总数
-    fetch('/api/comment-count')
+    // 调用 Waline 评论总数接口
+fetch('https://comments.hdxiaoke.top/api/comment/count')
   .then(r => r.json())
   .then(data => {
-    if (data.success) {
-      setComments(data.count);
+    if (data && typeof data === 'number') {
+      setComments(data);
+    } else if (data && data.data) {
+      setComments(data.data);
     }
+  })
+  .catch((error) => {
+    console.warn('获取评论数失败:', error);
+    setComments(0);
   });
 
     // 3. 计算运行天数
