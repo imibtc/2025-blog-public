@@ -86,8 +86,8 @@ function VisitorFooter() {
     // 2. 获取评论总数
 fetch('https://comments.hdxiaoke.top/api/comment?type=count')
   .then(r => r.json())
-  .then(data => {
-    setComments(typeof data === 'number' ? data : 0);
+  .then(res => {
+    setComments(res.data || 0);
   })
   .catch(() => {
     setComments(0);
