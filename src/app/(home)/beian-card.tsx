@@ -84,18 +84,12 @@ function VisitorFooter() {
       });
 
     // 2. 获取评论总数
-    // 调用 Waline 评论总数接口
-fetch('https://comments.hdxiaoke.top/api/comment/count')
+fetch('https://comments.hdxiaoke.top/api/comment?type=count')
   .then(r => r.json())
   .then(data => {
-    if (data && typeof data === 'number') {
-      setComments(data);
-    } else if (data && data.data) {
-      setComments(data.data);
-    }
+    setComments(typeof data === 'number' ? data : 0);
   })
-  .catch((error) => {
-    console.warn('获取评论数失败:', error);
+  .catch(() => {
     setComments(0);
   });
 
