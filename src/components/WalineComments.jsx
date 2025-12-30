@@ -21,7 +21,7 @@ export default function WalineComments({ path }) {
       path: path || window.location.pathname, // 文章路径
       lang: 'zh-CN', // 语言
       dark: 'auto', // 暗色模式跟随系统
-      reaction: true, // 启用表情反应
+      reaction: false, // 启用表情反应
       search: false, // 禁用搜索（简化版）
       login: 'disable', // 完全禁用登录，纯匿名评论
       
