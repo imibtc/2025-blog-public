@@ -26,9 +26,8 @@ https://github.com/walinejs/waline/blob/main/assets/waline.pgsql
 https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fwalinejs%2Fwaline%2Ftree%2Fmain%2Fexample
 ```
 
-1. 点击"GitHub"，创建私有仓库
-2. 输入项目名称（如 `waline-comments`）
-3. 等待自动创建完成（约2-3分钟）
+1. 输入项目名称（如 `waline-comments`）
+2. 等待自动创建完成（约2-3分钟）
 
 ### 2.2 配置环境变量（这个很重要关系到是否成功部署）
 在 Vercel 项目控制台：
@@ -352,28 +351,6 @@ SMTP_PASS=您的QQ邮箱授权码
 SITE_NAME=您的博客名称
 SITE_URL=https://www.yysuni.com
 AUTHOR_EMAIL=您的接收通知邮箱@qq.com
-```
-
-### 5.2 社交登录
-添加环境变量启用社交登录：
-```env
-# GitHub 登录
-GITHUB_CLIENT_ID=your-client-id
-GITHUB_CLIENT_SECRET=your-client-secret
-
-# 微信登录
-WECHAT_APP_ID=your-app-id
-WECHAT_APP_SECRET=your-app-secret
-```
-
-### 5.3 自定义样式
-在博客 CSS 中添加：
-```css
-:root {
-  --waline-theme-color: #27ae60;
-  --waline-active-color: #2ecc71;
-  --waline-font-size: 14px;
-}
 ```
 
 如有任何问题，可以访问 Waline 官方文档或留言：https://waline.js.org
