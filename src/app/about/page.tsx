@@ -193,7 +193,7 @@ export default function Page() {
 							animate={{ opacity: 1, scale: 1 }}
 							transition={{ delay: 0.1 }}
 							className='bg-card flex h-[53px] w-[53px] items-center justify-center rounded-full border hover:bg-gray-50 transition-colors'
-							title='查看本站评论'>
+							title='欢迎本站留言'
 							{/* 使用💬表情作为评论图标 */}
 							<span className='text-lg'>💬</span>
 						</motion.a>
