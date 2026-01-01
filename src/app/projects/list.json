@@ -127,5 +127,16 @@
 			"软件"
 		],
 		"github": "https://github.com/RemotePinee/AudioVisual"
+	},
+	{
+		"name": "好用的音乐软件（安卓+windows）",
+		"year": 2026,
+		"image": "/images/project/154f8ee0d9887309.webp",
+		"url": "https://tunefree.fun/",
+		"description": "安卓版支持多平台搜索，包括网易云、QQ音乐、酷我，也支持下载无损音乐等～\n",
+		"tags": [
+			"音乐",
+			"下载"
+		]
 	}
 ]
