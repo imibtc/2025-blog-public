@@ -34,7 +34,7 @@ const list = [
 	{
 		icon: ProjectsOutlineSVG,
 		iconActive: ProjectsFilledSVG,
-		label: '我的项目',
+		label: '项目分享',
 		href: '/projects'
 	},
 	{
