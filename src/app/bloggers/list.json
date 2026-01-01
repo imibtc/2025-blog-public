@@ -40,5 +40,12 @@
 		"url": "https://www.convry.com/",
 		"description": "网站介绍：一个安全快捷的在线工具箱，核心覆盖十大类实用功能：含视频/音频处理、图片操作、文档管理、数据图表制作，还提供文本处理、数字进制转换、加密编解码及多维度单位换算工具，功能细分且实用，能满足日常与轻度专业场景的在线工具需求。\n",
 		"stars": 3
+	},
+	{
+		"name": "DeepSeek 官方提示词网站",
+		"avatar": "blob:https://www.hdxiaoke.top/01c83a74-32ad-4916-ad37-a5d9521dbfe8",
+		"url": "https://api-docs.deepseek.com/zh-cn/prompt-library",
+		"description": "DeepSeek 官方提示词网站\n",
+		"stars": 4
 	}
 ]
