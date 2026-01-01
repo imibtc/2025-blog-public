@@ -194,8 +194,8 @@ export default function Page() {
 							transition={{ delay: 0.1 }}
 							className='bg-card flex h-[53px] w-[53px] items-center justify-center rounded-full border hover:bg-gray-50 transition-colors'
 							title='查看本站评论'>
-							{/* 使用文字图标 */}
-							<span className='text-sm font-medium'>留言>liu'ya
+							{/* 使用💬表情作为评论图标 */}
+							<span className='text-lg'>💬</span>
 						</motion.a>
 					</div>
 				</div>
