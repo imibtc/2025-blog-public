@@ -10,8 +10,6 @@ import { useConfigStore } from '@/app/(home)/stores/config-store'
 import LikeButton from '@/components/like-button'
 import GithubSVG from '@/svgs/github.svg'
 import initialData from './list.json'
-// 🎯 新增：导入评论组件
-import WalineComments from '@/components/WalineComments'
 
 export default function Page() {
 	const [data, setData] = useState<AboutData>(initialData as AboutData)
@@ -93,7 +91,6 @@ export default function Page() {
 
 	return (
 		<>
-			{/* 文件上传输入框 */}
 			<input
 				ref={keyInputRef}
 				type='file'
@@ -108,10 +105,8 @@ export default function Page() {
 
 			<div className='flex flex-col items-center justify-center px-6 pt-32 pb-12 max-sm:px-0'>
 				<div className='w-full max-w-[800px]'>
-					{/* 编辑模式 */}
 					{isEditMode ? (
 						isPreviewMode ? (
-							/* 预览模式 */
 							<div className='space-y-6'>
 								<div className='text-center'>
 									<h1 className='mb-4 text-4xl font-bold'>{data.title || '标题预览'}</h1>
@@ -127,7 +122,6 @@ export default function Page() {
 								)}
 							</div>
 						) : (
-							/* 编辑模式 */
 							<div className='space-y-6'>
 								<div className='space-y-4'>
 									<input
@@ -157,7 +151,6 @@ export default function Page() {
 							</div>
 						)
 					) : (
-						/* 🔹 正常显示模式 */
 						<>
 							<motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className='mb-12 text-center'>
 								<h1 className='mb-4 text-4xl font-bold'>{data.title}</h1>
@@ -174,13 +167,9 @@ export default function Page() {
 						</>
 					)}
 
-					{/* ============================================
-						🔹 评论功能区域开始
-					============================================ */}
-					
-					{/* 图标按钮区域 */}
+					{/* 图标按钮区域 - 修改这里 */}
 					<div className='mt-8 flex items-center justify-center gap-6'>
-						{/* GitHub 图标 */}
+						{/* 1. GitHub 图标 */}
 						<motion.a
 							href='https://github.com/imibtc/2025-blog-public'
 							target='_blank'
@@ -192,10 +181,10 @@ export default function Page() {
 							<GithubSVG />
 						</motion.a>
 
-						{/* 点赞按钮 */}
+						{/* 2. 点赞按钮 */}
 						<LikeButton slug='open-source' delay={0} />
 
-						{/* 🔹 新增：评论页面链接按钮 */}
+						{/* 3. 🔹 新增：评论页面链接按钮 */}
 						<motion.a
 							href='https://comments.hdxiaoke.top/'
 							target='_blank'
@@ -203,58 +192,17 @@ export default function Page() {
 							initial={{ opacity: 0, scale: 0.6 }}
 							animate={{ opacity: 1, scale: 1 }}
 							transition={{ delay: 0.1 }}
-							className='bg-card flex h-[53px] w-[53px] items-center justify-center rounded-full border'
+							className='bg-card flex h-[53px] w-[53px] items-center justify-center rounded-full border hover:bg-gray-50 transition-colors'
 							title='查看本站评论'>
 							{/* 使用💬表情作为评论图标 */}
-							<span className='text-lg font-semibold text-gray-700'>💬</span>
+							<span className='text-lg'>💬</span>
 						</motion.a>
 					</div>
-
-					{/* 🔹 评论框区域（只在非编辑模式显示） */}
-					{!isEditMode && (
-						<motion.div 
-							initial={{ opacity: 0, y: 20 }} 
-							animate={{ opacity: 1, y: 0 }} 
-							transition={{ delay: 0.3 }}
-							className='mt-12'
-						>
-							{/* 评论区域标题 */}
-							<h3 className='mb-6 text-center text-xl font-semibold'>关于本站的讨论</h3>
-							
-							{/* 🔹 使用 Waline 评论组件
-								参数说明：
-								- path: '/about' 表示这是"关于本站"页面的评论
-								- 路径会与评论数据关联，确保每个页面评论独立
-							*/}
-							<WalineComments path='/about' />
-							
-							{/* 补充说明文字 */}
-							<div className='mt-4 text-center text-sm text-gray-500'>
-								<p>
-									您也可以访问完整的{' '}
-									<a 
-										href='https://comments.hdxiaoke.top/' 
-										className='text-blue-500 hover:underline'
-										target='_blank'
-										rel='noreferrer'
-									>
-										评论页面
-									</a>{' '}
-									查看所有讨论
-								</p>
-							</div>
-						</motion.div>
-					)}
-					{/* ============================================
-						🔹 评论功能区域结束
-					============================================ */}
 				</div>
 			</div>
 
-			{/* 页面右上角的操作按钮 */}
 			<motion.div initial={{ opacity: 0, scale: 0.6 }} animate={{ opacity: 1, scale: 1 }} className='fixed top-4 right-6 z-10 flex gap-3 max-sm:hidden'>
 				{isEditMode ? (
-					/* 编辑模式下的按钮 */
 					<>
 						<motion.button
 							whileHover={{ scale: 1.05 }}
@@ -272,18 +220,11 @@ export default function Page() {
 							className={`rounded-xl border bg-white/60 px-6 py-2 text-sm`}>
 							{isPreviewMode ? '继续编辑' : '预览'}
 						</motion.button>
-						<motion.button 
-							whileHover={{ scale: 1.05 }} 
-							whileTap={{ scale: 0.95 }} 
-							onClick={handleSaveClick} 
-							disabled={isSaving} 
-							className='brand-btn px-6'
-						>
+						<motion.button whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} onClick={handleSaveClick} disabled={isSaving} className='brand-btn px-6'>
 							{isSaving ? '保存中...' : buttonText}
 						</motion.button>
 					</>
 				) : (
-					/* 正常模式下的编辑按钮 */
 					!hideEditButton && (
 						<motion.button
 							whileHover={{ scale: 1.05 }}
