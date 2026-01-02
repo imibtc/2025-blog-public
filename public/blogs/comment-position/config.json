@@ -1,0 +1,12 @@
+{
+  "title": "2025-blog首页添加评论按钮卡片教程",
+  "tags": [
+    "评论",
+    "卡片"
+  ],
+  "date": "2026-01-02T23:25",
+  "summary": "本教程是博客首页添加一个评论按钮卡片，实现方式与点赞按钮类似，支持拖拽布局和配置开关。前提是已部署了评论功能。",
+  "cover": "/blogs/comment-position/cc631df5da7038b2.webp",
+  "hidden": false,
+  "category": "开源"
+}
