@@ -91,6 +91,7 @@ export default function Home() {
 				{cardStyles.hatCard?.enabled !== false && <HatCard />}
 				{cardStyles.beianCard?.enabled !== false && <BeianCard />}
 				{cardStyles.likePosition?.enabled !== false && <LikePosition />}
+				{cardStyles.commentPosition?.enabled !== false && <CommentPosition />}
 			</div>
 
 			{siteContent.enableChristmas && <SnowfallBackground zIndex={2} count={!maxSM ? 125 : 20} />}
