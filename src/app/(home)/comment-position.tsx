@@ -23,6 +23,7 @@ export default function CommentPosition() {
 
 	return (
 		<HomeDraggableLayer cardKey='commentPosition' x={x} y={y} width={styles.width} height={styles.height}>
+			<div className='max-sm:inline-block'>
 			<motion.div className='absolute max-sm:static' initial={{ left: x, top: y }} animate={{ left: x, top: y }}>
 				{siteContent.enableChristmas && (
 					<>
@@ -48,6 +49,7 @@ export default function CommentPosition() {
 						<span className='text-lg'>💬</span>
 				</motion.a>
 			</motion.div>
+				</div>
 		</HomeDraggableLayer>
 	)
 }
