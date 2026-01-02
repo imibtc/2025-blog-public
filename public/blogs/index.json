@@ -1,5 +1,18 @@
 [
   {
+    "slug": "HomeDraggableLayer",
+    "title": "2025-blog移动端首页评论按钮和点赞按钮实现同一行",
+    "tags": [
+      "评论",
+      "位置"
+    ],
+    "date": "2026-01-02T23:40",
+    "summary": "前提是已添加 评论按钮卡片 ，方法见前文。",
+    "cover": "/blogs/HomeDraggableLayer/bcfb49c8af7ad582.webp",
+    "hidden": false,
+    "category": "开源"
+  },
+  {
     "slug": "comment-position",
     "title": "2025-blog首页添加评论按钮卡片教程",
     "tags": [
