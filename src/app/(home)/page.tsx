@@ -20,6 +20,7 @@ import { toast } from 'sonner'
 import ConfigDialog from './config-dialog/index'
 import { useEffect } from 'react'
 import SnowfallBackground from '@/layout/backgrounds/snowfall'
+import CommentPosition from './comment-position'
 
 export default function Home() {
 	const { maxSM } = useSize()
