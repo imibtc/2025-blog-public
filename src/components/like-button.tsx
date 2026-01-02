@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useState } from 'react'
 import useSWR from 'swr'
 import { motion, AnimatePresence } from 'motion/react'
-import { Heart, MessageCircle } from 'lucide-react'  // 🔹 添加 MessageCircle 图标
+import { Heart } from 'lucide-react'
 import clsx from 'clsx'
 import { cn } from '@/lib/utils'
 import { toast } from 'sonner'
@@ -11,17 +11,11 @@ type LikeButtonProps = {
 	slug?: string
 	className?: string
 	delay?: number
-	showCommentButton?: boolean  // 🔹 新增：控制是否显示评论按钮
 }
 
 const ENDPOINT = 'https://blog-liker.yysuni1001.workers.dev/api/like'
 
-export default function LikeButton({ 
-	slug = 'yysuni', 
-	delay, 
-	className,
-	showCommentButton = true  // 🔹 新增：默认显示评论按钮
-}: LikeButtonProps) {
+export default function LikeButton({ slug = 'yysuni', delay, className }: LikeButtonProps) {
 	slug = BLOG_SLUG_KEY + slug
 	const [liked, setLiked] = useState(false)
 	const [show, setShow] = useState(false)
@@ -83,11 +77,8 @@ export default function LikeButton({
 
 	const count = typeof fetchedCount === 'number' ? fetchedCount : null
 
-	if (!show) return null
-
-	return (
-		<div className="flex items-center gap-3">  {/* 🔹 包裹容器，使两个按钮并排 */}
-			{/* 爱心点赞按钮 */}
+	if (show)
+		return (
 			<motion.button
 				initial={{ opacity: 0, scale: 0.6 }}
 				animate={{ opacity: 1, scale: 1 }}
@@ -130,24 +121,5 @@ export default function LikeButton({
 					<Heart className={clsx('heartbeat', liked ? 'fill-rose-400 text-rose-400' : 'fill-rose-200 text-rose-200')} size={28} />
 				</motion.div>
 			</motion.button>
-
-			{/* 🔹 新增：评论按钮（只在移动端或指定时显示） */}
-			{showCommentButton && (
-				<motion.a
-					href="https://comments.hdxiaoke.top/"
-					target="_blank"
-					rel="noopener noreferrer"
-					initial={{ opacity: 0, scale: 0.6 }}
-					animate={{ opacity: 1, scale: 1 }}
-					whileHover={{ scale: 1.05 }}
-					whileTap={{ scale: 0.95 }}
-					aria-label="查看评论"
-					className="card relative overflow-visible rounded-full p-3 hover:bg-blue-50 transition-colors"
-					title="查看本站评论"
-				>
-					<MessageCircle className="text-blue-400" size={28} />
-				</motion.a>
-			)}
-		</div>
-	)
+		)
 }
