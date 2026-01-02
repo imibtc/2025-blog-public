@@ -1,6 +1,6 @@
 ![](/blogs/HomeDraggableLayer/bcfb49c8af7ad582.webp)
 
-前提是已添加 评论按钮卡片 ，方法见前文。
+**教程前提是：已添加 评论按钮卡片 ，方法见前文。**
 
 ###  1，修改首页评论卡片
 **修改文件**：`src/app/(home)/page.tsx`
