@@ -23,6 +23,7 @@ export default function LikePosition() {
 
 	return (
 		<HomeDraggableLayer cardKey='likePosition' x={x} y={y} width={styles.width} height={styles.height}>
+			<div className='max-sm:inline-block'>
 			<motion.div className='absolute max-sm:static' initial={{ left: x, top: y }} animate={{ left: x, top: y }}>
 				{siteContent.enableChristmas && (
 					<>
@@ -37,6 +38,7 @@ export default function LikePosition() {
 
 				<LikeButton delay={cardStyles.shareCard.order * ANIMATION_DELAY * 1000} />
 			</motion.div>
+				</div>
 		</HomeDraggableLayer>
 	)
 }
