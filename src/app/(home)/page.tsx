@@ -90,8 +90,10 @@ export default function Home() {
 				{!maxSM && cardStyles.writeButtons?.enabled !== false && <WriteButtons />}
 				{cardStyles.hatCard?.enabled !== false && <HatCard />}
 				{cardStyles.beianCard?.enabled !== false && <BeianCard />}
-				{cardStyles.likePosition?.enabled !== false && <LikePosition />}
-				{cardStyles.commentPosition?.enabled !== false && <CommentPosition />}
+				<div className='max-sm:flex max-sm:flex-row max-sm:gap-6'>
+  {cardStyles.likePosition?.enabled !== false && <LikePosition />}
+  {cardStyles.commentPosition?.enabled !== false && <CommentPosition />}
+</div>
 			</div>
 
 			{siteContent.enableChristmas && <SnowfallBackground zIndex={2} count={!maxSM ? 125 : 20} />}
