@@ -47,5 +47,12 @@
 		"url": "https://api-docs.deepseek.com/zh-cn/prompt-library",
 		"description": "DeepSeek 官方提示词网站\n",
 		"stars": 4
+	},
+	{
+		"name": "AiWind",
+		"avatar": "blob:https://www.hdxiaoke.top/1afc6099-7c40-4c97-8793-a78f92d66ce8",
+		"url": "https://aiwind.org/",
+		"description": "一个 AI 提示词库与生成工具，涵盖 AI 图像提示词等类型，已更新 800+Nanobanana Pro 提示词且持续更新，支持为 Nanobanana、Stable Diffusion 等主流 AI 绘画工具提供提示词，分类丰富，能满足不同 AI 创作需求。",
+		"stars": 4
 	}
 ]
