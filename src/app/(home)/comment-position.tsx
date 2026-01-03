@@ -3,6 +3,7 @@ import { motion } from 'motion/react'
 import { useCenterStore } from '@/hooks/use-center'
 import { useConfigStore } from './stores/config-store'
 import { HomeDraggableLayer } from './home-draggable-layer'
+import { MessageCircle } from 'lucide-react'
 
 export default function CommentPosition() {
 	const center = useCenterStore()
