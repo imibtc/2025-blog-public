@@ -46,9 +46,8 @@ export default function CommentPosition() {
 					whileHover={{ scale: 1.05 }}
 					whileTap={{ scale: 0.95 }}
 					title='查看本站评论'
-					className='card relative overflow-visible rounded-full p-3 hover:bg-blue-50 transition-colors'
->
-    <MessageCircle className="text-blue-400" size={28} />
+					className='card relative overflow-visible rounded-full p-3 bg-card flex h-[53px] w-[53px] items-center justify-center border hover:bg-gray-50 transition-colors'>
+    						<span className='text-lg'>💬</span>
 				</motion.a>
 			</motion.div>
 				</div>
