@@ -54,5 +54,12 @@
 		"url": "https://aiwind.org/",
 		"description": "一个 AI 提示词库与生成工具，涵盖 AI 图像提示词等类型，已更新 800+Nanobanana Pro 提示词且持续更新，支持为 Nanobanana、Stable Diffusion 等主流 AI 绘画工具提供提示词，分类丰富，能满足不同 AI 创作需求。",
 		"stars": 4
+	},
+	{
+		"name": "AI帮你设计logo",
+		"avatar": "/images/blogger/dbdb487e3b04cc0a.jpg",
+		"url": "https://slea.ai/zh-CN",
+		"description": "很快速很高级，告诉AI你想要的元素即可，完全免费～",
+		"stars": 3
 	}
 ]
