@@ -138,5 +138,17 @@
 			"音乐",
 			"下载"
 		]
+	},
+	{
+		"name": "全自动 AI自媒体流水线",
+		"year": 2026,
+		"image": "/images/project/41ad250bb62b1e7b.png",
+		"url": "https://github.com/Anning01/AIMedia",
+		"description": "爬微博、抖音、网易新闻的热点，根据这些热点自动生成文章，支持一键配图，并自动发到今日头条、公众号、百家号等～",
+		"tags": [
+			"自动",
+			"自媒体"
+		],
+		"github": "https://github.com/Anning01/AIMedia"
 	}
 ]
