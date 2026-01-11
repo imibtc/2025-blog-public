@@ -21,6 +21,7 @@ import { cn } from '@/lib/utils'
 import { saveBlogEdits } from './services/save-blog-edits'
 import { Check } from 'lucide-react'
 import { CategoryModal } from './components/category-modal'
+import { pageview } from '@waline/client'
 
 type DisplayMode = 'day' | 'week' | 'month' | 'year' | 'category'
 
