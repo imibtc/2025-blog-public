@@ -1,5 +1,20 @@
 [
   {
+    "slug": "ai-creation",
+    "title": "AI内容创作：6款开源神器，让创作效率提升10倍！",
+    "tags": [
+      "AI",
+      "开源",
+      "内容创作",
+      "GitHub"
+    ],
+    "date": "2026-01-11T19:38",
+    "summary": "推荐6款GitHub开源神器，覆盖图文、视频、音频全场景。",
+    "cover": "/blogs/ai-creation/7d747baf4a99d36b.webp",
+    "hidden": false,
+    "category": "开源"
+  },
+  {
     "slug": "HomeDraggableLayer",
     "title": "2025-blog移动端首页评论按钮和点赞按钮实现同一行",
     "tags": [
