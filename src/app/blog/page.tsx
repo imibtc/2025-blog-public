@@ -21,6 +21,7 @@ import { cn } from '@/lib/utils'
 import { saveBlogEdits } from './services/save-blog-edits'
 import { Check } from 'lucide-react'
 import { CategoryModal } from './components/category-modal'
+import { useEffect } from 'react'
 
 type DisplayMode = 'day' | 'week' | 'month' | 'year' | 'category'
 
@@ -43,6 +44,27 @@ export default function BlogPage() {
 	const [categoryList, setCategoryList] = useState<string[]>([])
 	const [newCategory, setNewCategory] = useState('')
 
+    // 初始化 Waline 浏览量统计
+useEffect(() => {
+  const initWalinePageview = async () => {
+    try {
+      // 动态导入 Waline
+      const { init } = await import('@waline/client')
+      // 只初始化浏览量功能
+      init({
+        serverURL: 'https://comments.hdxiaoke.top',
+        pageview: true,
+      })
+    } catch (error) {
+      console.error('Failed to initialize Waline pageview:', error)
+    }
+  }
+
+  // 当文章列表加载完成后初始化
+  if (items.length > 0) {
+    initWalinePageview()
+  }
+}, [items])
 	
 	useEffect(() => {
 		if (!editMode) {
