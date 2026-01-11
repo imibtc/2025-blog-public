@@ -430,6 +430,7 @@ export default function BlogPage() {
 												)}>
 												{it.title || it.slug}
 												{hasRead && <span className='text-secondary ml-2 text-xs'>[已阅读]</span>}
+												<span className='text-secondary ml-2 text-xs'>[<span id={`waline-pageview-/blog/${it.slug}`} className='waline-pageview-count'>0</span>]</span>
 											</div>
 											
 											<div className='flex flex-wrap items-center gap-2 max-sm:hidden'>
