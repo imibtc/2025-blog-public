@@ -44,6 +44,16 @@ export default function BlogPage() {
 	const [categoryList, setCategoryList] = useState<string[]>([])
 	const [newCategory, setNewCategory] = useState('')
 
+    // 初始化 Waline 浏览量统计
+useEffect(() => {
+  if (items.length > 0) {
+    // 调用 Waline 的 pageview 函数来更新所有文章的浏览量
+    pageview({
+      serverURL: 'https://comments.hdxiaoke.top',
+    })
+  }
+}, [items])
+	
 	useEffect(() => {
 		if (!editMode) {
 			setEditableItems(items)
