@@ -44,7 +44,10 @@ export function BlogPreview({ markdown, title, tags, date, summary, cover, slug 
 						))}
 					</div>
 
-					<div className='text-secondary mt-3 text-center text-sm'>{date}</div>
+					<div className='text-secondary mt-3 flex flex-wrap items-center justify-center gap-3 px-8 text-center text-sm'>
+						<span>{date}</span>
+						<span>浏览：<span id={`waline-pageview-/blog/${slug}`} className='waline-pageview-count'></span></span>
+					</div>
 
 					{summary && summaryInContent && <div className='text-secondary mt-6 cursor-text text-center text-sm'>“{summary}”</div>}
 
