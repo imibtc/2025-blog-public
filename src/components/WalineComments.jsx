@@ -23,6 +23,7 @@ export default function WalineComments({ path }) {
       dark: 'auto', // 暗色模式跟随系统
       reaction: false, // 启用表情反应
       search: false, // 禁用搜索（简化版）
+      pageview: true,  // 开启浏览量统计
       login: 'disable', // 完全禁用登录，纯匿名评论
 
       // 开启评论数统计
