@@ -21,7 +21,7 @@ import { cn } from '@/lib/utils'
 import { saveBlogEdits } from './services/save-blog-edits'
 import { Check } from 'lucide-react'
 import { CategoryModal } from './components/category-modal'
-import { pageview } from '@waline/client'
+import { init } from '@waline/client'
 
 type DisplayMode = 'day' | 'week' | 'month' | 'year' | 'category'
 
@@ -45,12 +45,22 @@ export default function BlogPage() {
 	const [newCategory, setNewCategory] = useState('')
 
     // 初始化 Waline 浏览量统计
+const walineInstanceRef = useRef(null)
+
 useEffect(() => {
   if (items.length > 0) {
-    // 调用 Waline 的 pageview 函数来更新所有文章的浏览量
-    pageview({
+    // 调用 Waline 的 init 函数来初始化浏览量统计
+    walineInstanceRef.current = init({
       serverURL: 'https://comments.hdxiaoke.top',
+      pageview: true, // 只启用浏览量统计
     })
+  }
+
+  return () => {
+    // 在组件卸载时销毁 Waline 实例
+    if (walineInstanceRef.current) {
+      walineInstanceRef.current.destroy()
+    }
   }
 }, [items])
 	
