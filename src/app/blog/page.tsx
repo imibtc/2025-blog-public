@@ -21,7 +21,6 @@ import { cn } from '@/lib/utils'
 import { saveBlogEdits } from './services/save-blog-edits'
 import { Check } from 'lucide-react'
 import { CategoryModal } from './components/category-modal'
-import { useEffect } from 'react'
 
 type DisplayMode = 'day' | 'week' | 'month' | 'year' | 'category'
 
@@ -44,26 +43,6 @@ export default function BlogPage() {
 	const [categoryList, setCategoryList] = useState<string[]>([])
 	const [newCategory, setNewCategory] = useState('')
 
-    // 动态初始化 Waline 浏览量统计
-	useEffect(() => {
-		const initWalinePageview = async () => {
-			try {
-				// 动态导入 Waline
-				const { init } = await import('@waline/client')
-				// 只初始化浏览量功能，不显示评论框
-				init({
-					serverURL: 'https://comments.hdxiaoke.top',
-					pageview: true,
-				})
-			} catch (error) {
-				console.error('Failed to initialize Waline pageview:', error)
-			}
-		}
-
-		if (items.length > 0) {
-			initWalinePageview()
-		}
-	}, [items])
 	
 	useEffect(() => {
 		if (!editMode) {
@@ -446,13 +425,12 @@ export default function BlogPage() {
 											<div
 												
 												className={cn(
-														'flex-1 truncate text-sm font-medium transition-all',
-														editMode ? null : 'group-hover:text-brand group-hover:translate-x-2'
-													)}>
-													{it.title || it.slug}
-													{hasRead && <span className='text-secondary ml-2 text-xs'>[已阅读]</span>}
-													<span className='text-secondary ml-2 text-xs'>[<span id={`waline-pageview-/blog/${it.slug}`} className='waline-pageview-count'>0</span>]</span>
-												</div>
+													'flex-1 truncate text-sm font-medium transition-all',
+													editMode ? null : 'group-hover:text-brand group-hover:translate-x-2'
+												)}>
+												{it.title || it.slug}
+												{hasRead && <span className='text-secondary ml-2 text-xs'>[已阅读]</span>}
+											</div>
 											
 											<div className='flex flex-wrap items-center gap-2 max-sm:hidden'>
 												{(it.tags || []).map(t => (
