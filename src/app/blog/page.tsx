@@ -21,7 +21,7 @@ import { cn } from '@/lib/utils'
 import { saveBlogEdits } from './services/save-blog-edits'
 import { Check } from 'lucide-react'
 import { CategoryModal } from './components/category-modal'
-import { init } from '@waline/client'
+import { useEffect } from 'react'
 
 type DisplayMode = 'day' | 'week' | 'month' | 'year' | 'category'
 
@@ -44,25 +44,26 @@ export default function BlogPage() {
 	const [categoryList, setCategoryList] = useState<string[]>([])
 	const [newCategory, setNewCategory] = useState('')
 
-    // 初始化 Waline 浏览量统计
-const walineInstanceRef = useRef(null)
+    // 动态初始化 Waline 浏览量统计
+	useEffect(() => {
+		const initWalinePageview = async () => {
+			try {
+				// 动态导入 Waline
+				const { init } = await import('@waline/client')
+				// 只初始化浏览量功能，不显示评论框
+				init({
+					serverURL: 'https://comments.hdxiaoke.top',
+					pageview: true,
+				})
+			} catch (error) {
+				console.error('Failed to initialize Waline pageview:', error)
+			}
+		}
 
-useEffect(() => {
-  if (items.length > 0) {
-    // 调用 Waline 的 init 函数来初始化浏览量统计
-    walineInstanceRef.current = init({
-      serverURL: 'https://comments.hdxiaoke.top',
-      pageview: true, // 只启用浏览量统计
-    })
-  }
-
-  return () => {
-    // 在组件卸载时销毁 Waline 实例
-    if (walineInstanceRef.current) {
-      walineInstanceRef.current.destroy()
-    }
-  }
-}, [items])
+		if (items.length > 0) {
+			initWalinePageview()
+		}
+	}, [items])
 	
 	useEffect(() => {
 		if (!editMode) {
