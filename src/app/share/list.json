@@ -62,5 +62,16 @@
 			"阅读APP"
 		],
 		"stars": 3
+	},
+	{
+		"name": "2025年得到电子书阅读报告",
+		"logo": "/images/share/cec7119c29daaaca.webp",
+		"url": "https://pan.quark.cn/s/707044d549f1",
+		"description": "大佬整理，包括热读好书、十大流行书籍等，来自得到的精选好书～\n",
+		"tags": [
+			"得到",
+			"电子书"
+		],
+		"stars": 3
 	}
 ]
