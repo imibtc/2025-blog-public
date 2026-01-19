@@ -150,5 +150,18 @@
 			"自媒体"
 		],
 		"github": "https://github.com/Anning01/AIMedia"
+	},
+	{
+		"name": "火宝短剧",
+		"year": 2026,
+		"image": "/images/project/469992ec5e528dfd.jpg",
+		"url": "https://github.com/chatfire-AI/huobao-drama?tab=readme-ov-file",
+		"description": "一个基于 AI 的短剧自动化生产平台，实现从剧本生成、角色设计、分镜制作到视频合成的全流程自动化。",
+		"tags": [
+			"AI",
+			"自动化",
+			"短剧"
+		],
+		"github": "https://github.com/chatfire-AI/huobao-drama?tab=readme-ov-file"
 	}
 ]
