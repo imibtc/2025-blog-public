@@ -163,5 +163,17 @@
 			"短剧"
 		],
 		"github": "https://github.com/chatfire-AI/huobao-drama?tab=readme-ov-file"
+	},
+	{
+		"name": "微信消息推送服务",
+		"year": 2026,
+		"image": "/images/project/6fc7ba1566a8c16f.webp",
+		"url": "https://github.com/frankiejun/wxpush",
+		"description": "这是一个基于 Cloudflare Workers 搭建的、轻量级的微信公众号模板消息推送服务。它提供了一个简单的 API 接口，让您可以轻松地通过 HTTP 请求将消息推送到指定的微信用户。",
+		"tags": [
+			"推送",
+			"微信"
+		],
+		"github": "https://github.com/frankiejun/wxpush"
 	}
 ]
