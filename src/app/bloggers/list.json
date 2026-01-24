@@ -61,5 +61,19 @@
 		"url": "https://slea.ai/zh-CN",
 		"description": "很快速很高级，告诉AI你想要的元素即可，完全免费～",
 		"stars": 3
+	},
+	{
+		"name": "Claude Code 深度教程",
+		"avatar": "/images/blogger/7c66a18d2dd5b3e7.webp",
+		"url": "https://claudecode.tangshuang.net/",
+		"description": "专为开发者打造的终极文档指南。从环境配置到构建自定义 AI 智能体，这套免费教程将帮助您掌握下一代编程工具，提升 3 倍开发效率。",
+		"stars": 5
+	},
+	{
+		"name": "Open Code 中文教程",
+		"avatar": "/images/blogger/08cdc218bceeba8a.webp",
+		"url": "https://learnopencode.com/",
+		"description": "完全免费 · 零基础学会用 AI 干实际工作",
+		"stars": 5
 	}
 ]
