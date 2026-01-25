@@ -1,5 +1,18 @@
 [
   {
+    "slug": "ai-01",
+    "title": "当今 AI 编程代理协作所需的基础知识",
+    "tags": [
+      "AI编程",
+      "基础知识"
+    ],
+    "date": "2026-01-25T20:49",
+    "summary": "这是非程序员使用 AI构建项目需要知道的基础知识",
+    "cover": "/blogs/ai-01/8e200f9ab24d1930.webp",
+    "hidden": false,
+    "category": "AI"
+  },
+  {
     "slug": "Prompt-Emoji",
     "title": "快速制作表情贴纸",
     "tags": [
