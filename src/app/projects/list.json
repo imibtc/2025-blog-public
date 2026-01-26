@@ -175,5 +175,17 @@
 			"微信"
 		],
 		"github": "https://github.com/frankiejun/wxpush"
+	},
+	{
+		"name": "视频下载+AI生成摘要",
+		"year": 2026,
+		"image": "/images/project/6207e22800d31ee1.webp",
+		"url": "https://github.com/vanloctech/youwee/releases/tag/v0.4.1",
+		"description": "大佬搞的，支持Mac、Windows双端，支持从YouTube, TikTok, Facebook, Instagram等上千个网站下载视频，还可以用AI生成摘要，很好用～",
+		"tags": [
+			"视频下载",
+			"AI摘要"
+		],
+		"github": "https://github.com/vanloctech/youwee"
 	}
 ]
