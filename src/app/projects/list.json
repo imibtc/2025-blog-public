@@ -187,5 +187,17 @@
 			"AI摘要"
 		],
 		"github": "https://github.com/vanloctech/youwee"
+	},
+	{
+		"name": "Office 正版的办公增强工具",
+		"year": 2026,
+		"image": "/images/project/b52bc3a8b80d6007.webp",
+		"url": "https://gitee.com/OdysseusYuan/Mocreak/releases/latest",
+		"description": "一键自动化下载、安装、激活 Office 正版的办公增强工具。该工具完全免费、无广告、绿色、无毒、简约、高效、安全。",
+		"tags": [
+			"软件",
+			"office"
+		],
+		"github": "https://github.com/OdysseusYuan/Mocreak"
 	}
 ]
