@@ -53,6 +53,13 @@ export default async function RootLayout({ children }: Readonly<{ children: Reac
 				/>
 
 				<Layout>{children}</Layout>
+				{/* 在这里粘贴AnythingLLM嵌入代码 ↓↓↓ */}
+        <script
+          data-embed-id="3e6d0480-e2cc-43d7-a4f4-55205db6351c"
+          data-base-api-url="http://hdxiaoke.yyboxdns.com:10007/api/embed"
+          src="http://hdxiaoke.yyboxdns.com:10007/embed/anythingllm-chat-widget.min.js"
+        />
+        {/* 粘贴在这里 ↑↑↑ */}
 			</body>
 		</html>
 	)
