@@ -54,12 +54,12 @@ export default async function RootLayout({ children }: Readonly<{ children: Reac
 
 				<Layout>{children}</Layout>
 
-				{/* AnythingLLM 智能问答机器人 */}
-				<script
-					data-embed-id="62378cb2-cd34-43cc-be41-aeea649afa70"
-					data-base-api-url="http://hdxiaoke.yyboxdns.com:10007/api/embed"
-					src="http://hdxiaoke.yyboxdns.com:10007/embed/anythingllm-chat-widget.min.js"
-				></script>
+				<!-- AnythingLLM 嵌入代码 -->
+    <script
+        data-embed-id="22773bee-ae69-4a59-ba4c-39283aa92732"
+        data-base-api-url="http://hdxiaoke.yyboxdns.com:10007/api/embed"
+        src="http://hdxiaoke.yyboxdns.com:10007/embed/anythingllm-chat-widget.min.js">
+    </script>
 			</body>
 		</html>
 	)
