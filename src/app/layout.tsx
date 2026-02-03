@@ -53,6 +53,13 @@ export default async function RootLayout({ children }: Readonly<{ children: Reac
 				/>
 
 				<Layout>{children}</Layout>
+
+				{/* AnythingLLM 智能问答机器人 */}
+				<script
+					data-embed-id="1a4d1597-7538-4dc1-b6d7-bbce60033bc5"
+					data-base-api-url="http://192.168.1.118:3001/api/embed"
+					src="http://192.168.1.118:3001/embed/anythingllm-chat-widget.min.js"
+				></script>
 				
 			</body>
 		</html>
