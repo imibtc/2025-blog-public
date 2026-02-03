@@ -62,7 +62,7 @@ export default async function RootLayout({ children }: Readonly<{ children: Reac
   data-assistant-bg-color="#F5F5F5"
   data-chat-icon="chatBubble"
   data-position="bottom-right"
-  data-window-height="70%"
+  data-window-height="80%"
   data-window-width="90%"
   data-text-size="14"
   data-language="zh"
