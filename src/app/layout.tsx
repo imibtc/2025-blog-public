@@ -57,6 +57,17 @@ export default async function RootLayout({ children }: Readonly<{ children: Reac
 				{/* AnythingLLM 智能问答机器人 */}
 				<script
 					data-embed-id="22773bee-ae69-4a59-ba4c-39283aa92732"
+					  data-button-color="#000000"
+  data-user-bg-color="#000000"
+  data-assistant-bg-color="#F5F5F5"
+  data-chat-icon="chatBubble"
+  data-position="bottom-right"
+  data-window-height="550px"
+  data-window-width="380px"
+  data-text-size="14"
+  data-assistant-name="小助手"
+  data-greeting="你好，有什么可以帮你的吗？"
+  data-no-sponsor="true"
 					data-base-api-url="https://anythingllm.hdxiaoke.workers.dev/api/embed"
 					src="https://anythingllm.hdxiaoke.workers.dev/embed/anythingllm-chat-widget.min.js"
 				></script>
