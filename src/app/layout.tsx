@@ -57,8 +57,8 @@ export default async function RootLayout({ children }: Readonly<{ children: Reac
 				<!-- AnythingLLM 嵌入代码 -->
     <script
         data-embed-id="22773bee-ae69-4a59-ba4c-39283aa92732"
-        data-base-api-url="http://hdxiaoke.yyboxdns.com:10007/api/embed"
-        src="http://hdxiaoke.yyboxdns.com:10007/embed/anythingllm-chat-widget.min.js">
+        data-base-api-url="https://anythingllm.hdxiaoke.workers.dev/api/embed"
+        src="https://anythingllm.hdxiaoke.workers.dev/embed/anythingllm-chat-widget.min.js">
     </script>
 			</body>
 		</html>
