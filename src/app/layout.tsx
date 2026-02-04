@@ -63,7 +63,7 @@ export default async function RootLayout({ children }: Readonly<{ children: Reac
   data-chat-icon="chatBubble"
   data-position="bottom-right"
   data-window-height="550px"
-  data-window-width="310px"
+  data-window-width="320px"
   data-text-size="14"
   data-language="zh"
   data-reset-chat-text="清空对话"
@@ -73,21 +73,6 @@ export default async function RootLayout({ children }: Readonly<{ children: Reac
 					data-base-api-url="https://anythingllm.hdxiaoke.workers.dev/api/embed"
 					src="https://anythingllm.hdxiaoke.workers.dev/embed/anythingllm-chat-widget.min.js"
 				></script>
-
-				<!-- 自定义样式 -->
-<style>
-  /* 将按钮往上移动 60px（避免遮挡底部内容） */
-  #anythingllm-embed-chat-button {
-    bottom: 80px !important;  /* 默认是 20px，改为 80px 往上移动 */
-    right: 20px !important;
-  }
-  
-  /* 同时调整聊天窗口位置 */
-  #anythingllm-embed-chat-widget {
-    bottom: 80px !important;
-    right: 20px !important;
-  }
-</style>
 				
 			</body>
 		</html>
