@@ -60,7 +60,7 @@ export default async function RootLayout({ children }: Readonly<{ children: Reac
 					  data-button-color="#000000"
   data-user-bg-color="#000000"
   data-assistant-bg-color="#F5F5F5"
-  data-chat-icon="chatBubble"
+  data-chat-icon="support"
   data-position="bottom-left"
   data-send-message-text= "输入消息..."
   data-default-messages="介绍下自己,2025-blog 怎么同步上游,2025-blog 怎么代理加速"
