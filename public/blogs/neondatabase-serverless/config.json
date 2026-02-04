@@ -1,5 +1,5 @@
 {
-  "title": "2025-blog-public 添加 @neondatabase/serverless依赖",
+  "title": "2025-blog-public 使用Neon数据库添加依赖",
   "tags": [
     "neno",
     "依赖"
