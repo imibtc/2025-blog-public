@@ -63,7 +63,7 @@ export default async function RootLayout({ children }: Readonly<{ children: Reac
   data-chat-icon="chatBubble"
   data-position="bottom-right"
   data-window-height="550px"
-  data-window-width="300px"
+  data-window-width="310px"
   data-text-size="14"
   data-language="zh"
   data-reset-chat-text="清空对话"
