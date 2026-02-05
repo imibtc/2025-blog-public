@@ -58,8 +58,9 @@ export default async function RootLayout({ children }: Readonly<{ children: Reac
 				<script
 					data-embed-id="22773bee-ae69-4a59-ba4c-39283aa92732"
 					  data-button-color="#000000"
-  data-user-bg-color="#000000"
-  data-assistant-bg-color="#F5F5F5"
+  data-user-bg-color="#d1fae5"
+  data-assistant-bg-color="#f0fdf4"
+  data-button-color="#10b981"
   data-chat-icon="support"
   data-position="bottom-left"
   data-send-message-text= "输入消息..."
