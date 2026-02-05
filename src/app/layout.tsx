@@ -64,7 +64,7 @@ export default async function RootLayout({ children }: Readonly<{ children: Reac
   data-chat-icon="support"
   data-position="bottom-left"
   data-send-message-text= "输入消息..."
-  data-default-messages="介绍下自己,2025-blog 怎么同步上游,2025-blog 怎么代理加速"
+  data-default-messages="介绍下自己,2025-blog 怎么同步上游,2025-blog 怎么免备案与加速"
   data-window-height="550px"
   data-window-width="330px"
   data-text-size="14"
